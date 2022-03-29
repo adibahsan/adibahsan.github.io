@@ -10,14 +10,15 @@ export function Footer() {
   return (
     <Container className="footer">
       <a href="/" className="logo">
-        <span>J</span>
-        <span>Tulio</span>
+        <span style ={{"color": "#23ce6b"}}>AA</span>
+        <span>Chowdhury</span>
       </a>
       <div>
         <p>
           Este site foi feito com <img src={reactIcon} alt="React" /> e muito
           <span>❤️</span>
         </p>
+        <p>Desing Inspiration from Joao Tuilo</p>
       </div>
 
       <div className="social-media">

@@ -187,22 +187,12 @@ export function Main(){
                 "height": 20
               },
               {
-                "src": sassIcon,
-                "width": 20,
-                "height": 20
-              },
-              {
                 "src": typescriptIcon,
                 "width": 20,
                 "height": 20
               },
               {
                 "src": vscodeIcon,
-                "width": 20,
-                "height": 20
-              },
-              {
-                "src": vueIcon,
                 "width": 20,
                 "height": 20
               },
