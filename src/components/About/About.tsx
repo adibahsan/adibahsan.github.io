@@ -9,6 +9,7 @@ import reactIcon from "../../assets/react-icon.svg";
 import typescriptIcon from "../../assets/typescript-icon.svg";
 import vueIcon from "../../assets/vue-icon.svg";
 import ScrollAnimation from "react-animate-on-scroll";
+import adibImage from "../../assets/adib.jpg"
 
 
 export function About(){
@@ -16,7 +17,7 @@ export function About(){
     <Container id="sobre">
       <div className="about-text">
         <ScrollAnimation animateIn="fadeInLeft">
-          <h2>Sobre mim</h2>
+          <h2>About Me</h2>
         </ScrollAnimation>
         <ScrollAnimation animateIn="fadeInLeft" delay={0.2 * 1000}>
           <p>Me chamo João Túlio, sou técnico em informática com uma grande paixão por programação. Sou apaixonado por entregar soluções que agregam na vida das pessoas e ao mesmo tempo me desafiam. Aprimorei minhas habilidades como desenvolvedor Front-End e Back-End</p>
@@ -81,7 +82,7 @@ export function About(){
       </div>
       <div className="about-image">
         <ScrollAnimation animateIn="fadeInRight" delay={0.6 * 1000}>
-          <img src="https://portfolio-joaotulio.vercel.app/img/foto_antiga.jpg" alt="Imagem de perfil" />
+          <img src={adibImage} alt="Adib Profile Picture" />
         </ScrollAnimation>
       </div>
     </Container>
