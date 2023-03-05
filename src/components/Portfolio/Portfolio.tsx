@@ -7,7 +7,7 @@ import ScrollAnimation from "react-animate-on-scroll";
 export function Portfolio(){
   return(
     <Container id="portfolio">
-      <h2>Meu portfólio</h2>
+      <h2>My Portfolio</h2>
 
       <div className="projects">
 
@@ -22,16 +22,22 @@ export function Portfolio(){
           </div>
           </header>
           <div className="body">
-            <h3>FCallendar</h3>
+            <h3>AppiGo Retailer</h3>
             <p>Uma aplicação Web realizada durante o Hackathon do programa de formação da <a href="https://www.fcamara.com.br/"> FCamara</a>. Esta aplicação serve para ajudar na volta do trabalho remoto para o presencial.
             </p>
           </div>
           <footer>
             <ul className="tech-list">
-              <li>Node</li>
+              <li>React</li>
+              <li>Spring Boot</li>
+              <li>MongoDB</li>
+              <li>Redux</li>
+            </ul>
+            <ul className="tech-list">
+              <li>Apache Solr</li>
+              <li>MySQL</li>
               <li>Express</li>
-              <li>MySql</li>
-              <li>Ejs</li>
+              <li>LoopBack</li>
             </ul>
           </footer>
         </div>
