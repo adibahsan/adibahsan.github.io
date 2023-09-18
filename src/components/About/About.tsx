@@ -14,7 +14,7 @@ import adibImage from "../../assets/adib.jpg"
 
 export function About(){
   return(
-    <Container id="sobre">
+    <Container id="about">
       <div className="about-text">
         <ScrollAnimation animateIn="fadeInLeft">
           <h2>About Me</h2>
@@ -57,24 +57,24 @@ export function About(){
           </div>
 
           <div className="hability">
-          <ScrollAnimation animateIn="fadeInUp" delay={0.3 * 1000}> 
+          <ScrollAnimation animateIn="fadeInUp" delay={0.3 * 1000}>
             <img src={jsIcon} alt="JavaScript" />
           </ScrollAnimation>
           </div>
 
           <div className="hability">
-          <ScrollAnimation animateIn="fadeInUp" delay={0.4 * 1000}> 
+          <ScrollAnimation animateIn="fadeInUp" delay={0.4 * 1000}>
             <img src={htmlIcon} alt="Html" />
           </ScrollAnimation>
           </div>
 
           <div className="hability">
-          <ScrollAnimation animateIn="fadeInUp" delay={0.5 * 1000}> 
+          <ScrollAnimation animateIn="fadeInUp" delay={0.5 * 1000}>
             <img src={cssIcon} alt="Css" />
           </ScrollAnimation>
           </div>
           <div className="hability">
-          <ScrollAnimation animateIn="fadeInUp" delay={0.6 * 1000}> 
+          <ScrollAnimation animateIn="fadeInUp" delay={0.6 * 1000}>
             <img src={nodeIcon} alt="Node" />
           </ScrollAnimation>
           </div>

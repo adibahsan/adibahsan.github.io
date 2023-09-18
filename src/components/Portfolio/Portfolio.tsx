@@ -31,13 +31,13 @@ export function Portfolio(){
               <li>React</li>
               <li>Spring Boot</li>
               <li>MongoDB</li>
-              <li>Redux</li>
+              <li>Kotlin</li>
             </ul>
             <ul className="tech-list">
               <li>Apache Solr</li>
               <li>MySQL</li>
               <li>Express</li>
-              <li>LoopBack</li>
+              <li>Redux</li>
             </ul>
           </footer>
         </div>

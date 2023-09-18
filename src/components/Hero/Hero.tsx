@@ -18,7 +18,7 @@ export function Hero(){
         </ScrollAnimation>
         <ScrollAnimation animateIn="fadeInUp" delay={0.6 * 1000}>
           <p className="small-resume">
-            Full Time Developer, Part-time Data Scientist, Lifelong Learner
+            Full Time Developer, Part-time Designer, Lifelong Learner
           </p>
         </ScrollAnimation>
 
