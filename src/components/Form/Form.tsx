@@ -49,7 +49,7 @@ export function Form() {
 
   return (
     <Container>
-      <h2>Entre em contato a partir do formulário abaixo</h2>
+      <h2>Leave your message here</h2>
       <form onSubmit={handleSubmit}>
         <input
           placeholder="Email"
@@ -64,7 +64,7 @@ export function Form() {
         <ValidationError prefix="Email" field="email" errors={state.errors} />
         <textarea
           required
-          placeholder="Deixe sua mensagem"
+          placeholder="Leave your message"
           id="message"
           name="message"
           onChange={(e) => {
@@ -86,7 +86,7 @@ export function Form() {
           type="submit"
           disabled={state.submitting || !validEmail || !message || !isHuman}
         >
-          Enviar
+          Send
         </button>
       </form>
       <ToastContainer />
