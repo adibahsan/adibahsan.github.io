@@ -5,6 +5,7 @@ import linkedinIcon from '../../assets/linkedin.png'
 import githubIcon from '../../assets/github.png'
 import instagramIcon from '../../assets/instagram.png'
 import discordIcon from '../../assets/discord.png'
+import facebookIcon from '../../assets/fb.svg'
 
 export function Footer() {
   return (
@@ -15,15 +16,17 @@ export function Footer() {
       </a>
       <div>
         <p>
-          Este site foi feito com <img src={reactIcon} alt="React" /> e muito
+         Made with <img src={reactIcon} alt="React" /> & a lot of
           <span>❤️</span>
         </p>
-        <p>Desing Inspiration from Joao Tuilo</p>
+          <p>Designing Inspiration from the Great
+              <a href={"https://github.com/joaotuliojt"} target={"_blank"}>Joao Tuilo</a>
+              <span></span></p>
       </div>
 
       <div className="social-media">
         <a
-          href="https://www.linkedin.com/in/jtsoares/"
+          href="https://github.com/adibahsan"
           target="_blank"
           rel="noreferrer"
         >
@@ -31,7 +34,7 @@ export function Footer() {
         </a>
 
         <a
-          href="https://github.com/joaotuliojt"
+          href="https://github.com/adibahsan"
           target="_blank"
           rel="noreferrer"
         >
@@ -39,15 +42,15 @@ export function Footer() {
         </a>
 
         <a
-          href="https://www.instagram.com/tulio_joaob/"
+          href="https://www.facebook.com/tjadib/"
           target="_blank"
           rel="noreferrer"
         >
-          <img src={instagramIcon} alt="Instagram" />
+          <img src={facebookIcon} alt="Facebook" />
         </a>
 
         <a
-          href="https://discord.com/users/426120432991862784"
+          href="https://discord.com/users/465134313319694337"
           target="_blank"
           rel="noreferrer"
         >
