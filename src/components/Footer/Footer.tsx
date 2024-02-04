@@ -26,7 +26,7 @@ export function Footer() {
 
       <div className="social-media">
         <a
-          href="https://github.com/adibahsan"
+          href="https://www.linkedin.com/in/adib-ahsan/"
           target="_blank"
           rel="noreferrer"
         >
