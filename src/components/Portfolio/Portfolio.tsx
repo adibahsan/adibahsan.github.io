@@ -23,7 +23,7 @@ export function Portfolio(){
           </header>
           <div className="body">
             <h3>AppiGo Retailer</h3>
-            <p>Uma aplicação Web realizada durante o Hackathon do programa de formação da <a href="https://www.fcamara.com.br/"> FCamara</a>. Esta aplicação serve para ajudar na volta do trabalho remoto para o presencial.
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
             </p>
           </div>
           <footer>
@@ -57,8 +57,8 @@ export function Portfolio(){
             </div>
             </header>
             <div className="body">
-              <h3>Github Searcher</h3>
-              <p>Uma versão mais agradável para ver seu perfil do GitHub, inclui visualização de dados , repositórios, compartilhamento entre outros.
+              <h3>AppiGo Pay</h3>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
               </p>
             </div>
             <footer>
@@ -82,8 +82,8 @@ export function Portfolio(){
             </div>
             </header>
             <div className="body">
-              <h3>Sunnyside agency</h3>
-              <p>Uma lading page de uma empresa fictícia proposta pelo <a href="https://www.frontendmentor.io/">Frontend Mentor.</a>
+              <h3>Restohub</h3>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
               </p>
             </div>
             <footer>
@@ -107,8 +107,8 @@ export function Portfolio(){
             </div>
             </header>
             <div className="body">
-              <h3>Portfólio V1</h3>
-              <p>Uma versão alternativa de meu portfólio, utilizando VueJs.
+              <h3>applova Delivery Gateway</h3>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
               </p>
             </div>
             <footer>
@@ -131,8 +131,8 @@ export function Portfolio(){
             </div>
             </header>
             <div className="body">
-              <h3>Dtmoney</h3>
-              <p>Um gerenciador de finanças para analisar seus ganhos, gastos e ter um controle maior de suas finanças.
+              <h3>AI Space Assistant</h3>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
               </p>
             </div>
             <footer>
@@ -158,8 +158,8 @@ export function Portfolio(){
             </div>
             </header>
             <div className="body">
-              <h3>Music Library</h3>
-              <p>Uma interface para uma biblioteca de músicas, semelhante ao Spotify.
+              <h3>Porfolio TS</h3>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
               </p>
             </div>
             <footer>
