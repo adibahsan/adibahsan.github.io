@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://adibahsan.github.io/portfolio-react-ts/",
+  "homepage": "https://adibahsan.github.io/",
   "dependencies": {
     "@formspree/react": "^2.2.4",
     "@react-buddy/ide-toolbox": "^2.4.0",
