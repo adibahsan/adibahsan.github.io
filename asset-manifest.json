@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.46961403.css",
+    "main.js": "/static/js/main.fd86f4b1.js",
+    "static/media/adib-linked.jpg": "/static/media/adib-linked.276c7f92937cae127a69.jpg",
+    "static/media/CV_Adib_Ahsan_Chowdhury.pdf": "/static/media/CV_Adib_Ahsan_Chowdhury.38f404c11c4dd2f25fc0.pdf",
+    "static/media/discord.png": "/static/media/discord.ef8d9c88e020507818c2.png",
+    "static/media/github.png": "/static/media/github.a855c3975c028d8069f5.png",
+    "static/media/linkedin.png": "/static/media/linkedin.f249b38224ca41a0b909.png",
+    "static/media/illustration.svg": "/static/media/illustration.cf4b7a67f23b684549c4f797c62b527a.svg",
+    "static/media/mysql-icon.svg": "/static/media/mysql-icon.64f88a817c7f8c20c853ea3acbca9310.svg",
+    "static/media/node-icon.svg": "/static/media/node-icon.cc3d45a160579a330a5c17cc2c8f1407.svg",
+    "static/media/typescript-icon.svg": "/static/media/typescript-icon.f3bc0fd998dea6b1266965436af97a49.svg",
+    "static/media/bootstrap-icon.svg": "/static/media/bootstrap-icon.09b773cc0f17dc078cc9864e5e8006ba.svg",
+    "static/media/react-icon.svg": "/static/media/react-icon.a010f287ea79ad0673b610a223faa951.svg",
+    "static/media/phone-icon.svg": "/static/media/phone-icon.fc7195139d684fa2f6bb03b8b9816095.svg",
+    "static/media/email-icon.svg": "/static/media/email-icon.a5dd245e834641e729e77e40309039c4.svg",
+    "static/media/html-icon.svg": "/static/media/html-icon.185baee7db74b83bf22eec6a6def7644.svg",
+    "static/media/css-icon.svg": "/static/media/css-icon.212d777ae2db63edb235490d487dc292.svg",
+    "static/media/vscode-icon.svg": "/static/media/vscode-icon.7bfadaaeba8770093f98a79aa2c77d41.svg",
+    "index.html": "/index.html",
+    "static/media/js-icon.svg": "/static/media/js-icon.2d25723e91c8a9e057ae447ae6a73ecb.svg",
+    "static/media/vue-icon.svg": "/static/media/vue-icon.7219cc0384993fc067ee20c94a66b1e9.svg",
+    "static/media/github-icon.svg": "/static/media/github-icon.c48bfb2a53c47ee345a50672e3d24e07.svg",
+    "static/media/fb.svg": "/static/media/fb.757da545be003ba2c42e1a2ac8f95a54.svg",
+    "static/media/external-link-icon.svg": "/static/media/external-link-icon.97075d22dfb22a8c8d253b264e892b5f.svg",
+    "main.46961403.css.map": "/static/css/main.46961403.css.map",
+    "main.fd86f4b1.js.map": "/static/js/main.fd86f4b1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.46961403.css",
+    "static/js/main.fd86f4b1.js"
+  ]
+}
