@@ -76,13 +76,13 @@ export function Form() {
           field="message"
           errors={state.errors}
         />
-        <ReCAPTCHA
+        {/* <ReCAPTCHA
           sitekey="6Ldes2kpAAAAABK86jwj_gQ5SS9YuNB2dIagIr8L"
           onChange={(e) => {
             console.log("recaptcha", e);
             setIsHuman(true)
           }}
-        />
+        /> */}
         <button
           type="submit"
           disabled={state.submitting || !validEmail || !message }
