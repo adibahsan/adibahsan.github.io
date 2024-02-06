@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.46961403.css",
-    "main.js": "/static/js/main.3faf9c61.js",
+    "main.js": "/static/js/main.553c917c.js",
     "static/media/adib-linked.jpg": "/static/media/adib-linked.276c7f92937cae127a69.jpg",
     "static/media/CV_Adib_Ahsan_Chowdhury.pdf": "/static/media/CV_Adib_Ahsan_Chowdhury.38f404c11c4dd2f25fc0.pdf",
     "static/media/discord.png": "/static/media/discord.ef8d9c88e020507818c2.png",
@@ -25,10 +25,10 @@
     "static/media/fb.svg": "/static/media/fb.757da545be003ba2c42e1a2ac8f95a54.svg",
     "static/media/external-link-icon.svg": "/static/media/external-link-icon.97075d22dfb22a8c8d253b264e892b5f.svg",
     "main.46961403.css.map": "/static/css/main.46961403.css.map",
-    "main.3faf9c61.js.map": "/static/js/main.3faf9c61.js.map"
+    "main.553c917c.js.map": "/static/js/main.553c917c.js.map"
   },
   "entrypoints": [
     "static/css/main.46961403.css",
-    "static/js/main.3faf9c61.js"
+    "static/js/main.553c917c.js"
   ]
 }
