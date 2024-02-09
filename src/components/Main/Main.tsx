@@ -12,10 +12,8 @@ import jsIcon from "../../assets/js-icon.svg";
 import mysqlIcon from "../../assets/mysql-icon.svg";
 import nodeIcon from "../../assets/node-icon.svg";
 import reactIcon from "../../assets/react-icon.svg";
-import sassIcon from "../../assets/sass-icon.svg";
 import typescriptIcon from "../../assets/typescript-icon.svg";
 import vscodeIcon from "../../assets/vscode-icon.svg";
-import vueIcon from "../../assets/vue-icon.svg";
 
 
 export function Main(){
