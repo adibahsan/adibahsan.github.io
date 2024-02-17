@@ -3,6 +3,9 @@ name: Deploy to GitHub Pages
 on:
   pull_request:
     types: [closed]
+  push:
+    branches:
+      - master
 
 jobs:
   build-and-deploy:
@@ -16,7 +19,7 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.4.1
         with:
-          node-version: '14'
+          node-version: '20'
 
       - name: Cache dependencies
         uses: actions/cache@v2.1.6
