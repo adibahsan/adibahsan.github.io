@@ -18,6 +18,9 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Install pnpm
+        run: npm install -g pnpm
+
       - name: Cache dependencies
         uses: actions/cache@v2.1.6
         with:
@@ -28,7 +31,7 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          npx pnpm install --frozen-lockfile
+          pnpm install --frozen-lockfile
           npm run predeploy
 
       - name: Deploy 🚀
