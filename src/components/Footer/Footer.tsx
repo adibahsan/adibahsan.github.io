@@ -14,13 +14,13 @@ export function Footer() {
         <span style ={{"color": "#23ce6b"}}>AA</span>
         <span>Chowdhury</span>
       </a>
-      <div>
+      <div style={{display:"flex", alignItems:"center", flexDirection:"column"}}>
         <p>
          Made with <img src={reactIcon} alt="React" /> & a lot of
           <span>❤️</span>
         </p>
-          <p>Designing Inspiration from the Great
-              <a href={"https://github.com/joaotuliojt"} target={"_blank"}>Joao Tuilo</a>
+          <p style={{display:"unset"}}>Designing Inspiration from the Great
+              <a style={{color:"#23ce6b"}} href={"https://github.com/joaotuliojt"} target={"_blank"}> Joao Tuilo</a>
               <span></span></p>
       </div>
 
