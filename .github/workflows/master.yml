@@ -28,7 +28,7 @@ jobs:
 
       - name: Install and Build 🔧
         run: |
-          npx pnpm ci
+          npx pnpm install --frozen-lockfile
           npm run predeploy
 
       - name: Deploy 🚀
