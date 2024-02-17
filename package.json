@@ -32,7 +32,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "pnpm run build",
+    "predeploy": "CI=false pnpm run build",
     "deploy": "npx gh-pages -d build"
   },
   "eslintConfig": {
