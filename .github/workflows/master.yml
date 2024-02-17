@@ -1,8 +1,6 @@
 name: Deploy to GitHub Pages
 
 on:
-  pull_request:
-    types: [closed]
   push:
     branches:
       - master
@@ -10,7 +8,6 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
 
     steps:
       - name: Checkout 🛎️
@@ -24,14 +21,14 @@ jobs:
       - name: Cache dependencies
         uses: actions/cache@v2.1.6
         with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
-            ${{ runner.os }}-node-
+            ${{ runner.os }}-pnpm-
 
       - name: Install and Build 🔧
         run: |
-          npm ci
+          npx pnpm ci
           npm run predeploy
 
       - name: Deploy 🚀
