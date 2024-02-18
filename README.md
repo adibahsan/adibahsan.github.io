@@ -26,7 +26,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/adibahsan/portfolio.git
+   git clone git@github.com:adibahsan/adibahsan.github.io.git
    ```
 2. Install NPM packages
 ```sh
