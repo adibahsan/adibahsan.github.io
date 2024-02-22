@@ -1,6 +1,6 @@
 # Portfolio
 
-This is the source code for the portfolio website hosted at [adibahsan.github.io](https://adibahsan.github.io/). It's a front-end web application built with React, TypeScript, and other modern web technologies. the unforked version of the repo is available at [João Túlio's Github](https://github.com/joaotuliojt/portfolio-react)
+This is the source code for the portfolio website hosted at [adibahsan.github.io](https://adibahsan.github.io/). It's a front-end web application built with React, TypeScript, and other modern web technologies. The unforked version of the repo is available at [João Túlio's Github](https://github.com/joaotuliojt/portfolio-react).
 
 ## Table of Contents
 
