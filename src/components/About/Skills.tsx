@@ -8,7 +8,7 @@ export const Skills: React.FC<SkillProps> = ({ src, alt, delay }) => {
     return (
         <div className="hability">
             <ScrollAnimation animateIn="fadeInUp" delay={delay}>
-                <img src={src} alt={alt} />
+                <img src={src} alt={alt} title={alt} />
             </ScrollAnimation>
         </div>
     );
