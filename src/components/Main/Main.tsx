@@ -14,6 +14,19 @@ import nodeIcon from "../../assets/node-icon.svg";
 import reactIcon from "../../assets/react-icon.svg";
 import typescriptIcon from "../../assets/typescript-icon.svg";
 import vscodeIcon from "../../assets/vscode-icon.svg";
+
+import rnIcon from "../../assets/icons/react-native-1.svg";
+import golangIcon from "../../assets/icons/Go-Logo_Blue.svg";
+import kotlinIcon from "../../assets/icons/kotlin.png";
+import javaIcon from "../../assets/icons/java.png";
+import springIcon from "../../assets/icons/spring-boot.png";
+import expressIcon from "../../assets/icons/express-js.png";
+import dockerIcon from "../../assets/icons/docker.png";
+import k8sIcon from "../../assets/icons/kubernets.png";
+import mongoIcon from "../../assets/icons/mongodb.png";
+import pythonIcon from "../../assets/icons/python.png";
+import reduxIcon from "../../assets/icons/redux.png";
+import thymeLeafIcon from "../../assets/icons/thymeleaf.png";
 // @ts-ignore
 import type {ISourceOptions} from "tsparticles";
 
@@ -146,17 +159,12 @@ const stylingOptions: ISourceOptions = {
             },
             "image": [
                 {
-                    "src": boostrapIcon,
+                    "src": reactIcon,
                     "width": 20,
                     "height": 20
                 },
                 {
                     "src": cssIcon,
-                    "width": 20,
-                    "height": 20
-                },
-                {
-                    "src": htmlIcon,
                     "width": 20,
                     "height": 20
                 },
@@ -176,7 +184,7 @@ const stylingOptions: ISourceOptions = {
                     "height": 20
                 },
                 {
-                    "src": reactIcon,
+                    "src": reduxIcon,
                     "width": 20,
                     "height": 20
                 },
@@ -186,7 +194,27 @@ const stylingOptions: ISourceOptions = {
                     "height": 20
                 },
                 {
-                    "src": vscodeIcon,
+                    "src": javaIcon,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": kotlinIcon,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": springIcon,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": dockerIcon,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": k8sIcon,
                     "width": 20,
                     "height": 20
                 },
