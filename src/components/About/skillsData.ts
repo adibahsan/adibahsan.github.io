@@ -17,6 +17,8 @@ import k8sIcon from "../../assets/icons/kubernets.png";
 import mongoIcon from "../../assets/icons/mongodb.png";
 import mysqlIcon from "../../assets/icons/mysql.png";
 import pythonIcon from "../../assets/icons/python.png";
+import reduxIcon from "../../assets/icons/redux.png";
+import thymeLeafIcon from "../../assets/icons/thymeleaf.png";
 export interface SkillProps {
     src: string;
     alt: string;
@@ -26,12 +28,12 @@ export const skillsData:SkillProps[] = [
     {
         src: jsIcon,
         alt: "JavaScript",
-        delay: 0.3 * 1000,
+        delay: 0.1 * 1000,
     },
     {
         src: typescriptIcon,
         alt: "Typescript",
-        delay: 0.1 * 1000,
+        delay: 0.15 * 1000,
     },
     {
         src: javaIcon,
@@ -41,12 +43,12 @@ export const skillsData:SkillProps[] = [
     {
         src: kotlinIcon,
         alt: "Kotlin",
-        delay: 0.3 * 1000,
+        delay: 0.25 * 1000,
     },
     {
         src: golangIcon,
         alt: "Golang",
-        delay: 0.35 * 1000,
+        delay: 0.3 * 1000,
     },
     {
         src: pythonIcon,
@@ -56,17 +58,22 @@ export const skillsData:SkillProps[] = [
     {
         src: reactIcon,
         alt: "React",
-        delay: 0.1 * 1000,
+        delay: 0.4 * 1000,
+    },
+    {
+        src: reduxIcon,
+        alt: "Redux",
+        delay: 0.45 * 1000,
     },
     {
         src: rnIcon,
         alt: "React Native",
-        delay: 0.1 * 1000,
+        delay: 0.5 * 1000,
     },
     {
         src: nodeIcon,
         alt: "Node JS",
-        delay: 0.6 * 1000,
+        delay: 0.55 * 1000,
     },
     {
         src: expressIcon,
@@ -76,27 +83,32 @@ export const skillsData:SkillProps[] = [
     {
         src: springIcon,
         alt: "Spring Boot",
-        delay: 0.2 * 1000,
+        delay: 0.65 * 1000,
+    },
+    {
+        src: thymeLeafIcon,
+        alt: "Thymeleaf",
+        delay: 0.7 * 1000,
     },
     {
         src: mysqlIcon,
         alt: "MySQL",
-        delay: 0.3 * 1000,
+        delay: 0.75 * 1000,
     },
     {
         src: mongoIcon,
         alt: "MongoDB",
-        delay: 0.4 * 1000,
+        delay: 0.8 * 1000,
     },
     {
         src: dockerIcon,
         alt: "Dokcer",
-        delay: 0.5 * 1000,
+        delay: 0.85 * 1000,
     },
     {
         src: k8sIcon,
         alt: "Kubernetes",
-        delay: 0.6 * 1000,
+        delay: 0.9 * 1000,
     },
     // {
     //     src: typescriptIcon,
