@@ -1,6 +1,5 @@
 
-import cssIcon from "../../assets/css-icon.svg";
-import htmlIcon from "../../assets/html-icon.svg";
+
 import jsIcon from "../../assets/js-icon.svg";
 import nodeIcon from "../../assets/node-icon.svg";
 import reactIcon from "../../assets/react-icon.svg";
