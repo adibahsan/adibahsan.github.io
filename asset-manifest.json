@@ -1,34 +1,43 @@
 {
   "files": {
     "main.css": "/static/css/main.46961403.css",
-    "main.js": "/static/js/main.26ddcc83.js",
-    "static/media/adib-linked.jpg": "/static/media/adib-linked.276c7f92937cae127a69.jpg",
+    "main.js": "/static/js/main.c3120b39.js",
+    "static/media/adib-linked-u2.jpg": "/static/media/adib-linked-u2.c0cee7895966e4110ad1.jpg",
     "static/media/CV_Adib_Ahsan_Chowdhury.pdf": "/static/media/CV_Adib_Ahsan_Chowdhury.38f404c11c4dd2f25fc0.pdf",
+    "static/media/mongodb.png": "/static/media/mongodb.d5767e81605b3fd24c81.png",
+    "static/media/kotlin.png": "/static/media/kotlin.37032a87666ccb1e1049.png",
+    "static/media/mysql.png": "/static/media/mysql.bdbd1eb709e4c13258d2.png",
+    "static/media/thymeleaf.png": "/static/media/thymeleaf.afb32317e3ae15783772.png",
+    "static/media/docker.png": "/static/media/docker.b31b265ce564c258a41b.png",
+    "static/media/kubernets.png": "/static/media/kubernets.24af486fdc06d8f9653e.png",
+    "static/media/express-js.png": "/static/media/express-js.607abe4a368d2d6ee1a9.png",
+    "static/media/redux.png": "/static/media/redux.73033514300cc7351993.png",
+    "static/media/python.png": "/static/media/python.449a712450fc92a8810d.png",
+    "static/media/java.png": "/static/media/java.b7a2f6415cec10cee413.png",
+    "static/media/spring-boot.png": "/static/media/spring-boot.953ee24309fa38748981.png",
     "static/media/discord.png": "/static/media/discord.ef8d9c88e020507818c2.png",
     "static/media/github.png": "/static/media/github.a855c3975c028d8069f5.png",
     "static/media/linkedin.png": "/static/media/linkedin.f249b38224ca41a0b909.png",
     "static/media/illustration.svg": "/static/media/illustration.cf4b7a67f23b684549c4f797c62b527a.svg",
+    "static/media/react-native-1.svg": "/static/media/react-native-1.55360266b3781dae00a5a77c8916f82d.svg",
     "static/media/mysql-icon.svg": "/static/media/mysql-icon.e5a509a5d3ca7443ae6ccf379181381d.svg",
     "static/media/node-icon.svg": "/static/media/node-icon.3dc364b8e9beb3561620274aea4f0844.svg",
     "static/media/typescript-icon.svg": "/static/media/typescript-icon.17d5e87eac2c9d1dc722ce1e0b60d5df.svg",
-    "static/media/bootstrap-icon.svg": "/static/media/bootstrap-icon.be374cc9bd654654918df2362bcfb240.svg",
+    "static/media/Go-Logo_Blue.svg": "/static/media/Go-Logo_Blue.a7ec2a5cabbfaa86d4ab2049185ce4d0.svg",
     "static/media/react-icon.svg": "/static/media/react-icon.f1484e295933af0e748d6a01b05a8361.svg",
+    "index.html": "/index.html",
     "static/media/phone-icon.svg": "/static/media/phone-icon.91617f27ac814ef5f29b533ab3d256ec.svg",
     "static/media/email-icon.svg": "/static/media/email-icon.a83578f914460e952501546655b76165.svg",
-    "index.html": "/index.html",
-    "static/media/html-icon.svg": "/static/media/html-icon.ebfc51e406097a90691ab82f1aa72db3.svg",
     "static/media/css-icon.svg": "/static/media/css-icon.60a6c50d5a470990f63ee17a3bbd9178.svg",
-    "static/media/vscode-icon.svg": "/static/media/vscode-icon.3001bc63a45d488b7d2c332e4a2059ad.svg",
     "static/media/js-icon.svg": "/static/media/js-icon.ffcf56dc5498f7bbbec802191c740e5f.svg",
-    "static/media/vue-icon.svg": "/static/media/vue-icon.c286d2da48ffbf281f407b0c4c94271f.svg",
     "static/media/github-icon.svg": "/static/media/github-icon.c48bfb2a53c47ee345a50672e3d24e07.svg",
     "static/media/fb.svg": "/static/media/fb.757da545be003ba2c42e1a2ac8f95a54.svg",
     "static/media/external-link-icon.svg": "/static/media/external-link-icon.97075d22dfb22a8c8d253b264e892b5f.svg",
     "main.46961403.css.map": "/static/css/main.46961403.css.map",
-    "main.26ddcc83.js.map": "/static/js/main.26ddcc83.js.map"
+    "main.c3120b39.js.map": "/static/js/main.c3120b39.js.map"
   },
   "entrypoints": [
     "static/css/main.46961403.css",
-    "static/js/main.26ddcc83.js"
+    "static/js/main.c3120b39.js"
   ]
 }
