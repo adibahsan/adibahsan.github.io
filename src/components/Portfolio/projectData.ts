@@ -44,10 +44,10 @@ export const projectsData: ProjectData[] = [
     },
     {
         title: "appiGo Delivery",
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        description: "Developed a robust delivery system for AppiGo Rush, a food delivery service in Colombo, featuring seamless order management, real-time rider tracking, and multi-platform support for Android, iOS, and Huawei devices. The system also included an admin portal for efficient order processing, rescheduling, and delivery coordination, ensuring a smooth and scalable operation.",
         githubLink: null,
         externalLink: "https://play.google.com/store/apps/details?id=com.aggregatorapp&hl=en&gl=US",
-        techList: ["VueJs", "JavaScript"]
+        techList: ["Spring Boot", "MongoDB", "Kotlin", "React", "React Native", "Redux"]
     },
     {
         title: "AI Space Assistant",
