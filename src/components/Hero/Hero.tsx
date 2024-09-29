@@ -3,6 +3,7 @@ import { Container } from "./styles"
 import ScrollAnimation from "react-animate-on-scroll"
 import Illustration from "../../assets/illustration.svg"
 import { NavHashLink } from "react-router-hash-link"
+import {SocialLogins} from "../Footer/Footer";
 export function Hero(){
   return(
     <Container id="home">
@@ -30,7 +31,7 @@ export function Hero(){
       </div>
       <div className="hero-image">
         <ScrollAnimation animateIn="fadeInRight" delay={1*1000}>
-          <img src={Illustration} alt="Ilustração"/>
+          <img src={Illustration} alt="Illustration"/>
         </ScrollAnimation>
       </div>
     </Container>
