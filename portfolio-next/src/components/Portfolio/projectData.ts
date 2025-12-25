@@ -4,6 +4,7 @@ export interface ProjectData {
     githubLink: string | null;
     externalLink: string | null;
     techList: string[];
+    img?: string;
 }
 
 export const projectsData: ProjectData[] = [
