@@ -1,0 +1,296 @@
+'use client'
+
+import Particles, { initParticlesEngine } from "@tsparticles/react"
+import { loadSlim } from "@tsparticles/slim"
+import {Container} from "./styles"
+import {Hero} from "../Hero/Hero"
+import {About} from "../About/About";
+import {Contact} from "../Contact/Contact";
+import {Portfolio} from "../Portfolio/Portfolio";
+import { useEffect, useState } from "react"
+
+import boostrapIcon from "../../assets/bootstrap-icon.svg";
+import cssIcon from "../../assets/css-icon.svg";
+import htmlIcon from "../../assets/html-icon.svg";
+import jsIcon from "../../assets/js-icon.svg";
+import mysqlIcon from "../../assets/mysql-icon.svg";
+import nodeIcon from "../../assets/node-icon.svg";
+import reactIcon from "../../assets/react-icon.svg";
+import typescriptIcon from "../../assets/typescript-icon.svg";
+import vscodeIcon from "../../assets/vscode-icon.svg";
+
+import rnIcon from "../../assets/icons/react-native-1.svg";
+import golangIcon from "../../assets/icons/Go-Logo_Blue.svg";
+import kotlinIcon from "../../assets/icons/kotlin.png";
+import javaIcon from "../../assets/icons/java.png";
+import springIcon from "../../assets/icons/spring-boot.png";
+import expressIcon from "../../assets/icons/express-js.png";
+import dockerIcon from "../../assets/icons/docker.png";
+import k8sIcon from "../../assets/icons/kubernets.png";
+import mongoIcon from "../../assets/icons/mongodb.png";
+import pythonIcon from "../../assets/icons/python.png";
+import reduxIcon from "../../assets/icons/redux.png";
+import thymeLeafIcon from "../../assets/icons/thymeleaf.png";
+// @ts-ignore
+import type {ISourceOptions} from "tsparticles";
+
+
+const stylingOptions: ISourceOptions = {
+    "fullScreen": {
+        "enable": true,
+        "zIndex": 1
+    },
+    "detectRetina": true,
+    "fpsLimit": 60,
+    "interactivity": {
+        "events": {
+            "onClick": {
+                "enable": true,
+                "mode": "push"
+            },
+            "onDiv": {
+                "elementId": "repulse-div",
+                "enable": false,
+                "mode": "repulse"
+            },
+            "onHover": {
+                "enable": true,
+                "mode": "bubble",
+                "parallax": {
+                    "enable": false,
+                    "force": 60,
+                    "smooth": 10
+                }
+            },
+            "resize": {
+                "enable": true,
+                "delay": 0.5
+            }
+        },
+        "modes": {
+            "bubble": {
+                "distance": 400,
+                "duration": 2,
+                "opacity": 0.8,
+                "size": 2,
+            },
+            "connect": {
+                "distance": 80,
+                "lineLinked": {
+                    "opacity": 0.5
+                },
+                "radius": 60
+            },
+            "grab": {
+                "distance": 400,
+                "lineLinked": {
+                    "opacity": 1
+                }
+            },
+            "push": {
+                "quantity": 2
+            },
+            "remove": {
+                "quantity": 2
+            },
+            "repulse": {
+                "distance": 200,
+                "duration": 0.4
+            }
+        }
+    },
+    "particles": {
+        "color": {
+            "value": "#ffffff"
+        },
+        "links": {
+            "blink": false,
+            "color": "#000",
+            "consent": false,
+            "distance": 150,
+            "enable": false,
+            "opacity": 0.4,
+            "width": 1
+        },
+        "move": {
+            "attract": {
+                "enable": false,
+                "rotate": {
+                    "x": 600,
+                    "y": 1200
+                }
+            },
+            "enable": true,
+            "outModes": {
+                "default": "out"
+            },
+            "random": false,
+            "speed": 2,
+            "straight": false
+        },
+        "number": {
+            "density": {
+                "enable": true,
+                "width": 800
+            },
+            "limit": {
+                "mode": "delete",
+                "value": 20
+            },
+            "value": 15,
+        },
+        "opacity": {
+            "animation": {
+                "enable": true,
+                "minimumValue": 0.2,
+                "speed": 1,
+                "sync": false
+            },
+            "random": true,
+            "value": 1
+        },
+        "rotate": {
+            "animation": {
+                "enable": true,
+                "speed": 5,
+                "sync": false
+            },
+            "direction": "random",
+            "random": true,
+            "value": 0
+        },
+        "shape": {
+            "character": {
+                "fill": false,
+                "font": "Verdana",
+                "style": "",
+                "value": "*",
+                "weight": "400"
+            },
+            "image": [
+                {
+                    "src": reactIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": cssIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": jsIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": mysqlIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": nodeIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": reduxIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": typescriptIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": javaIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": kotlinIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": springIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": dockerIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+                {
+                    "src": k8sIcon.src,
+                    "width": 20,
+                    "height": 20
+                },
+
+            ],
+            "polygon": {
+                "sides": 5
+            },
+            "stroke": {
+                "color": "#000000",
+                "width": 0
+            },
+            "type": "image"
+        },
+        "size": {
+            "animation": {
+                "enable": false,
+                "minimumValue": 0.1,
+                "speed": 40,
+                "sync": false
+            },
+            "random": false,
+            "value": 16
+        }
+    },
+    "polygon": {
+        "draw": {
+            "enable": false,
+            "lineColor": "#ffffff",
+            "lineWidth": 0.5
+        },
+        "move": {
+            "radius": 10
+        },
+        "scale": 1,
+        "url": ""
+    },
+    "background": {
+        "image": "",
+        "position": "50% 50%",
+        "repeat": "no-repeat",
+        "size": "cover"
+    }
+};
+
+export function Main() {
+    const [init, setInit] = useState(false);
+
+    useEffect(() => {
+        initParticlesEngine(async (engine) => {
+            await loadSlim(engine);
+        }).then(() => {
+            setInit(true);
+        });
+    }, []);
+
+    return (
+        <Container>
+            {init && <Particles
+                id="tsparticles"
+                options={stylingOptions}
+            />}
+            <Hero/>
+            <About/>
+            <Portfolio/>
+            <Contact/>
+        </Container>
+    );
+}
