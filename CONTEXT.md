@@ -21,7 +21,7 @@ The Next Portfolio is Cutover-ready when it presents the same sections, copy, pr
 _Avoid_: pixel-perfect, visual freeze
 
 **Layout Land**:
-Land the sibling App Layout on `master` (`portfolio-next/` + `portfolio-react/`) with Content Parity, without switching production hosting. Status: complete on this branch once CI deploys from `portfolio-react/` and both apps build.
+Land the sibling App Layout on `master` (`portfolio-next/` + `portfolio-react/`) with Content Parity, without switching production hosting. Status: complete on this branch (sibling apps + Pages CI from `portfolio-react/`); production Cutover remains deferred.
 _Avoid_: Cutover (until hosting is decided and production is switched)
 
 **App Layout**:

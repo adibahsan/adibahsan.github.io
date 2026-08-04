@@ -1,8 +1,15 @@
 'use client'
 
 import { Container } from './styles'
-import Link from 'next/link'
 import { useState } from 'react'
+
+function smoothScrollTo(hash: string) {
+  const id = hash.replace('#', '')
+  const el = document.getElementById(id)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 
 export function Header() {
   const [isActive, setActive] = useState(false)
@@ -16,12 +23,26 @@ export function Header() {
     setActive(false)
   }
 
+  function handleNavClick(
+    event: React.MouseEvent<HTMLAnchorElement>,
+    hash: string
+  ) {
+    event.preventDefault()
+    closeMenu()
+    smoothScrollTo(hash)
+    window.history.pushState(null, '', hash)
+  }
+
   return (
     <Container className="header-fixed">
-      <Link href="#home" className="logo">
-        <span style={{color:"#23ce6b"}}>AA</span>
+      <a
+        href="#home"
+        className="logo"
+        onClick={(e) => handleNavClick(e, '#home')}
+      >
+        <span style={{ color: '#23ce6b' }}>AA</span>
         <span>Chowdhury</span>
-      </Link>
+      </a>
 
       <input
         onChange={toggleTheme}
@@ -33,18 +54,18 @@ export function Header() {
       <label htmlFor="switch">Toggle</label>
 
       <nav className={isActive ? 'active' : ''}>
-        <Link href="#home" onClick={closeMenu}>
+        <a href="#home" onClick={(e) => handleNavClick(e, '#home')}>
           Home
-        </Link>
-        <Link href="#about" onClick={closeMenu}>
+        </a>
+        <a href="#about" onClick={(e) => handleNavClick(e, '#about')}>
           About Me
-        </Link>
-        <Link href="#portfolio" onClick={closeMenu}>
+        </a>
+        <a href="#portfolio" onClick={(e) => handleNavClick(e, '#portfolio')}>
           Portfolio
-        </Link>
-        <Link href="#contact" onClick={closeMenu}>
+        </a>
+        <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>
           Contact
-        </Link>
+        </a>
         <a href="/Adib Chowdhury_Resume.pdf" download className="button">
           CV
         </a>
