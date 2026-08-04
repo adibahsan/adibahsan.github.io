@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adib Ahsan | Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono&display=swap');
+
+        :root {
+            --bg-color: #050505;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #6366f1;
+            --accent-glow: rgba(99, 102, 241, 0.2);
+        }
+
+        .light-mode {
+            --bg-color: #f8fafc;
+            --card-bg: rgba(0, 0, 0, 0.03);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --accent: #4f46e5;
+            --accent-glow: rgba(79, 70, 229, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        /* Moving Background Canvas */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .glass {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(160px, auto);
+            gap: 1.5rem;
+        }
+
+        .bento-item {
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bento-item:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px -20px var(--accent-glow);
+        }
+
+        /* Animated Spotlights */
+        .spotlight {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+        }
+
+        .bento-item:hover .spotlight {
+            opacity: 1;
+        }
+
+        /* Floating Tech Icons Animation */
+        @keyframes floating {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        .floating-icon {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        /* Data Pulse Animation */
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(0.33);
+                opacity: 0;
+            }
+
+            80%,
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .pulse-marker {
+            position: relative;
+        }
+
+        .pulse-marker::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+            animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+
+        /* Career Graph Parallax Styles */
+        .timeline-container {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--accent), transparent);
+            transform-origin: top;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+            z-index: 10;
+        }
+
+        .parallax-node {
+            transition: transform 0.1s ease-out;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-link {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body class="selection:bg-indigo-500/30">
+
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 border-b border-white/5 backdrop-blur-xl">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2 font-bold text-xl tracking-tighter cursor-pointer"
+                onclick="switchTab('portfolio')">
+                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white italic">A</div>
+                <span>AA.</span>
+            </div>
+
+            <div class="flex items-center gap-4 md:gap-8">
+                <div class="hidden md:flex gap-8 text-sm font-medium">
+                    <button onclick="switchTab('portfolio')" class="nav-link active text-indigo-400"
+                        id="btn-portfolio">Work</button>
+                    <button onclick="switchTab('career')" class="nav-link text-slate-500 hover:text-indigo-400"
+                        id="btn-career">Career</button>
+                    <button onclick="switchTab('blog')" class="nav-link text-slate-500 hover:text-indigo-400"
+                        id="btn-blog">Blog</button>
+                    <button onclick="switchTab('about')" class="nav-link text-slate-500 hover:text-indigo-400"
+                        id="btn-about">About</button>
+                </div>
+                <button onclick="toggleTheme()" class="p-2 rounded-xl glass hover:bg-white/10 transition-all">
+                    <i id="theme-icon" data-lucide="sun" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <header class="pt-40 pb-20 px-6 max-w-6xl mx-auto relative">
+        <div class="space-y-6 relative z-10">
+            <div
+                class="inline-flex items-center gap-2 px-3 py-1 rounded-full glass text-[10px] font-bold tracking-[0.2em] uppercase text-indigo-400">
+                <span class="relative flex h-2 w-2">
+                    <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                Available for New Projects
+            </div>
+            <h1 class="text-6xl md:text-9xl font-black tracking-tighter leading-[0.9]">
+                Architecting <br>
+                <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Digital
+                    Scale.</span>
+            </h1>
+            <p class="max-w-xl text-xl opacity-70 leading-relaxed font-medium">
+                Full-Stack Engineer specialized in fintech middleware and distributed systems.
+                I turn complex business logic into seamless, scalable code.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="max-w-6xl mx-auto px-6 pb-24">
+
+        <!-- Portfolio Tab -->
+        <div id="portfolio" class="tab-content active">
+            <div class="bento-grid">
+                <!-- Row 1 -->
+                <div class="bento-item glass md:col-span-2 flex flex-col justify-between group">
+                    <div class="spotlight"></div>
+                    <div class="relative z-10 flex justify-between items-start">
+                        <i data-lucide="terminal" class="text-indigo-500 w-8 h-8 floating-icon"></i>
+                        <span class="text-[10px] mono opacity-50 uppercase tracking-widest">Core Philosophy</span>
+                    </div>
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-bold mb-4 italic">Reliability > Speed.</h3>
+                        <p class="text-sm opacity-60 mb-6 max-w-sm">Every line of code is a commitment to performance
+                            and uptime. I build with failure-modes in mind.</p>
+                        <div class="flex gap-2">
+                            <div class="w-10 h-1 bg-indigo-500 rounded-full animate-pulse"></div>
+                            <div class="w-4 h-1 bg-white/10 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-item glass md:col-span-1 flex flex-col justify-center text-center group">
+                    <div class="spotlight"></div>
+                    <span class="relative z-10 text-xs uppercase tracking-widest opacity-40 mb-2">Years of Exp</span>
+                    <span class="relative z-10 text-5xl font-black text-white flex items-baseline justify-center gap-1">
+                        <span class="pulse-marker">4.5</span>
+                        <span class="text-indigo-500 text-2xl">+</span>
+                    </span>
+                </div>
+
+                <div class="bento-item glass md:col-span-1 flex flex-col items-center justify-center text-center group cursor-pointer"
+                    onclick="switchTab('about')">
+                    <div class="spotlight"></div>
+                    <div
+                        class="relative z-10 w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-4 group-hover:bg-indigo-500/20 transition-all floating-icon">
+                        <i data-lucide="user" class="w-6 h-6"></i>
+                    </div>
+                    <span class="relative z-10 text-sm font-bold">About Me</span>
+                </div>
+
+                <!-- Row 2: Projects -->
+                <div class="bento-item glass md:col-span-2 group cursor-pointer">
+                    <div class="spotlight"></div>
+                    <div class="relative z-10 flex flex-col h-full justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-8">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase font-bold tracking-widest">Fintech</span>
+                                <i data-lucide="arrow-up-right"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all"></i>
+                            </div>
+                            <h3 class="text-3xl font-extrabold mb-3 group-hover:text-indigo-400 transition-colors">
+                                AppiGo Pay</h3>
+                            <p class="opacity-60 text-sm">Universal API gateway for 12+ payment providers. Built with
+                                Spring Boot and GraphQL.</p>
+                        </div>
+                        <div class="mt-8 flex gap-3">
+                            <span
+                                class="text-[10px] px-2 py-1 rounded bg-indigo-500/10 text-indigo-400 mono">Java</span>
+                            <span
+                                class="text-[10px] px-2 py-1 rounded bg-indigo-500/10 text-indigo-400 mono">Kafka</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bento-item glass md:col-span-2 group cursor-pointer">
+                    <div class="spotlight"></div>
+                    <div class="relative z-10 flex flex-col h-full justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-8">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase font-bold tracking-widest">E-Commerce</span>
+                                <i data-lucide="arrow-up-right"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all"></i>
+                            </div>
+                            <h3 class="text-3xl font-extrabold mb-3 group-hover:text-purple-400 transition-colors">Rush
+                                Delivery</h3>
+                            <p class="opacity-60 text-sm">Real-time logistics engine processing 50k+ daily orders with
+                                zero latency.</p>
+                        </div>
+                        <div class="mt-8 flex gap-3">
+                            <span
+                                class="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 mono">Node.js</span>
+                            <span
+                                class="text-[10px] px-2 py-1 rounded bg-purple-500/10 text-purple-400 mono">Redis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Row 3: New Projects -->
+                <div class="bento-item glass md:col-span-2 group cursor-pointer">
+                    <div class="spotlight"></div>
+                    <div class="relative z-10 flex flex-col h-full justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-8">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase font-bold tracking-widest">Blockchain</span>
+                                <i data-lucide="arrow-up-right"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all"></i>
+                            </div>
+                            <h3 class="text-3xl font-extrabold mb-3 group-hover:text-cyan-400 transition-colors">Vault-X
+                            </h3>
+                            <p class="opacity-60 text-sm">A secure asset management layer for decentralized finance
+                                protocols. Audit-ready smart contracts.</p>
+                        </div>
+                        <div class="mt-8 flex gap-3">
+                            <span
+                                class="text-[10px] px-2 py-1 rounded bg-cyan-500/10 text-cyan-400 mono">Solidity</span>
+                            <span class="text-[10px] px-2 py-1 rounded bg-cyan-500/10 text-cyan-400 mono">Rust</span>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-cyan-600/10 blur-[80px] rounded-full group-hover:bg-cyan-600/30 transition-all duration-700">
+                    </div>
+                </div>
+
+                <div class="bento-item glass md:col-span-2 group cursor-pointer">
+                    <div class="spotlight"></div>
+                    <div class="relative z-10 flex flex-col h-full justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-8">
+                                <span
+                                    class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] uppercase font-bold tracking-widest">AI
+                                    & Data</span>
+                                <i data-lucide="arrow-up-right"
+                                    class="w-5 h-5 opacity-40 group-hover:opacity-100 transition-all"></i>
+                            </div>
+                            <h3 class="text-3xl font-extrabold mb-3 group-hover:text-emerald-400 transition-colors">
+                                InsightFlow</h3>
+                            <p class="opacity-60 text-sm">Automated ETL pipelines for customer behavior analysis using
+                                LLM-driven categorization.</p>
+                        </div>
+                        <div class="mt-8 flex gap-3">
+                            <span
+                                class="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 mono">Python</span>
+                            <span
+                                class="text-[10px] px-2 py-1 rounded bg-emerald-500/10 text-emerald-400 mono">PyTorch</span>
+                        </div>
+                    </div>
+                    <div
+                        class="absolute -bottom-10 -right-10 w-48 h-48 bg-emerald-600/10 blur-[80px] rounded-full group-hover:bg-emerald-600/30 transition-all duration-700">
+                    </div>
+                </div>
+
+                <!-- Row 4: Latest Blogs Integration (Dynamic Area) -->
+                <div class="bento-item glass md:col-span-4 group overflow-hidden">
+                    <div class="spotlight"></div>
+                    <div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-10">
+                        <div class="md:w-1/3">
+                            <div class="flex items-center gap-3 mb-4">
+                                <span class="w-8 h-8 rounded-lg bg-indigo-500/20 flex items-center justify-center">
+                                    <i data-lucide="rss" class="w-4 h-4 text-indigo-400"></i>
+                                </span>
+                                <span class="text-xs font-bold uppercase tracking-[0.2em] opacity-50">Pulse</span>
+                            </div>
+                            <h3 class="text-4xl font-black mb-4">Latest Insights</h3>
+                            <p class="opacity-60 mb-6 text-sm leading-relaxed">Thoughts on architecture, engineering
+                                leadership, and the future of distributed systems.</p>
+                            <button onclick="switchTab('blog')"
+                                class="group/btn flex items-center gap-2 text-indigo-400 font-bold hover:gap-4 transition-all">
+                                View all articles <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+
+                        <div class="md:w-2/3 grid md:grid-cols-2 gap-4 w-full">
+                            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-indigo-500/50 transition-all group/card cursor-pointer"
+                                onclick="switchTab('blog')">
+                                <span class="text-[10px] mono text-indigo-400 mb-2 block uppercase">Mar 2024</span>
+                                <h4 class="font-bold mb-2 group-hover/card:text-indigo-400 transition-colors">
+                                    Microservices: The Hidden Cost</h4>
+                                <p class="text-xs opacity-50 line-clamp-2">Exploring why many teams fail at
+                                    microservices and how to avoid common pitfalls...</p>
+                            </div>
+                            <div class="p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-purple-500/50 transition-all group/card cursor-pointer"
+                                onclick="switchTab('blog')">
+                                <span class="text-[10px] mono text-purple-400 mb-2 block uppercase">Feb 2024</span>
+                                <h4 class="font-bold mb-2 group-hover/card:text-purple-400 transition-colors">Rust for
+                                    Enterprise Middleware</h4>
+                                <p class="text-xs opacity-50 line-clamp-2">Comparing Rust and Java for high-throughput
+                                    fintech applications in 2024...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Career Graph Tab -->
+        <div id="career" class="tab-content">
+            <div class="max-w-4xl mx-auto py-10">
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    <div class="mb-24 relative pl-10 group">
+                        <div class="timeline-dot top-2"></div>
+                        <div class="parallax-node space-y-2">
+                            <span class="text-indigo-400 mono text-sm font-bold tracking-widest">2021 — PRESENT</span>
+                            <h3 class="text-3xl font-bold">Lead Software Engineer</h3>
+                            <p class="text-xl text-slate-400">Applova Inc.</p>
+                            <p class="opacity-60 max-w-xl leading-relaxed mt-4">Orchestrating the technical vision for
+                                multi-tenant SaaS platforms.</p>
+                        </div>
+                    </div>
+                    <!-- ... other career nodes same as before ... -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog Tab (Full List) -->
+        <div id="blog" class="tab-content">
+            <div class="max-w-3xl mx-auto space-y-8">
+                <article
+                    class="p-8 glass rounded-3xl group cursor-pointer hover:bg-white/[0.05] transition-all overflow-hidden relative">
+                    <div class="spotlight"></div>
+                    <div class="relative z-10 flex gap-4 items-center mb-4">
+                        <span
+                            class="text-[10px] mono text-indigo-400 px-2 py-1 bg-indigo-400/10 rounded uppercase font-bold">System
+                            Design</span>
+                        <span class="text-xs opacity-50">12 Min Read</span>
+                    </div>
+                    <h2
+                        class="relative z-10 text-4xl font-bold mb-4 group-hover:text-indigo-400 transition-colors leading-tight">
+                        How we scaled to 1M requests per second.</h2>
+                </article>
+            </div>
+        </div>
+
+        <!-- About Tab -->
+        <div id="about" class="tab-content">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="space-y-8">
+                    <h2 class="text-5xl font-black tracking-tighter">Beyond the Code.</h2>
+                    <p class="text-lg opacity-70 leading-relaxed">Based in Dhaka, I build digital products that matter.
+                    </p>
+                    <div class="flex gap-4 pt-4">
+                        <a href="#"
+                            class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold hover:bg-indigo-500 transition-all flex items-center gap-2 group">
+                            Download CV <i data-lucide="download"
+                                class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+                <div
+                    class="aspect-square glass rounded-[3rem] p-8 flex items-center justify-center relative overflow-hidden group">
+                    <span
+                        class="text-[12rem] font-black italic text-indigo-600 group-hover:scale-110 transition-transform">A</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-20 border-t border-white/5 text-center px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-left">
+                <h4 class="font-bold text-xl mb-2 italic">AA.</h4>
+                <p class="text-sm opacity-40">Engineering the future, one commit at a time.</p>
+            </div>
+            <div class="flex gap-6">
+                <i data-lucide="github"
+                    class="opacity-40 hover:opacity-100 cursor-pointer transition-all hover:scale-110"></i>
+                <i data-lucide="linkedin"
+                    class="opacity-40 hover:opacity-100 cursor-pointer transition-all hover:scale-110"></i>
+                <i data-lucide="twitter"
+                    class="opacity-40 hover:opacity-100 cursor-pointer transition-all hover:scale-110"></i>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let mouse = { x: null, y: null };
+
+        function initCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles = [];
+            for (let i = 0; i < 60; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 2 + 1,
+                    speedX: Math.random() * 0.5 - 0.25,
+                    speedY: Math.random() * 0.5 - 0.25
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const isLight = document.body.classList.contains('light-mode');
+            ctx.fillStyle = isLight ? 'rgba(79, 70, 229, 0.4)' : 'rgba(99, 102, 241, 0.4)';
+            ctx.strokeStyle = isLight ? 'rgba(79, 70, 229, 0.1)' : 'rgba(99, 102, 241, 0.1)';
+
+            particles.forEach(p => {
+                p.x += p.speedX; p.y += p.speedY;
+                if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+                ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+                if (mouse.x) {
+                    const dx = mouse.x - p.x; const dy = mouse.y - p.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke(); }
+                }
+            });
+            requestAnimationFrame(animate);
+        }
+
+        function setupSpotlights() {
+            document.querySelectorAll('.bento-item, article, .glass').forEach(item => {
+                const spotlight = item.querySelector('.spotlight');
+                if (!spotlight) return;
+                item.addEventListener('mousemove', (e) => {
+                    const rect = item.getBoundingClientRect();
+                    spotlight.style.left = `${e.clientX - rect.left}px`;
+                    spotlight.style.top = `${e.clientY - rect.top}px`;
+                });
+            });
+        }
+
+        window.addEventListener('resize', initCanvas);
+        window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
+        window.onload = () => { initCanvas(); animate(); setupSpotlights(); lucide.createIcons(); };
+
+        window.addEventListener('scroll', () => {
+            document.querySelectorAll('.parallax-node').forEach((node, idx) => {
+                node.style.transform = `translateY(${-window.pageYOffset * (0.05 + idx * 0.02)}px)`;
+            });
+            const line = document.querySelector('.timeline-line');
+            if (line) line.style.height = `${Math.min((window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 150, 100)}%`;
+        });
+
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+            const isLight = document.body.classList.contains('light-mode');
+            document.getElementById('theme-icon').setAttribute('data-lucide', isLight ? 'moon' : 'sun');
+            lucide.createIcons();
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('text-indigo-400', 'active'); link.classList.add('text-slate-500');
+            });
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('text-indigo-400', 'active'); activeBtn.classList.remove('text-slate-500');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            lucide.createIcons();
+            setupSpotlights();
+        }
+    </script>
+</body>
+
+</html>
