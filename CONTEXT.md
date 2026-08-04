@@ -5,23 +5,23 @@ Personal developer portfolio site for Adib Ahsan Chowdhury, currently served at 
 ## Language
 
 **Live Portfolio**:
-The site currently served in production from `master` (Create React App under `src/`).
-_Avoid_: old portfolio, CRA site (as a product name)
+The site currently served in production from GitHub Pages — Create React App under `portfolio-react/`.
+_Avoid_: old portfolio, CRA site (as a product name), root CRA
 
 **Next Portfolio**:
-The Next.js App Router port of the Live Portfolio on branch `convert-to-nextjs` under `portfolio-next/`.
+The Next.js App Router port of the Live Portfolio under `portfolio-next/`, at Content Parity for a later Cutover.
 _Avoid_: portfolio-next (as a product name when speaking in domain terms), Next rewrite
 
 **Cutover**:
-Replacing the Live Portfolio in production with the Next Portfolio as the sole served site.
+Replacing the Live Portfolio in production with the Next Portfolio as the sole served site (planned on Vercel per ADR-0001).
 _Avoid_: migration (unless discussing code move mechanics), redesign
 
 **Content Parity**:
-The Next Portfolio is Cutover-ready when it presents the same sections, copy, projects, skills, links, resume, and contact behavior as the Live Portfolio. Next-only plumbing and animation upgrades already on `convert-to-nextjs` are allowed; redesign is not.
+The Next Portfolio is Cutover-ready when it presents the same sections, copy, projects, skills, links, resume, and contact behavior as the Live Portfolio. Next-only plumbing and animation upgrades already landed are allowed; redesign is not.
 _Avoid_: pixel-perfect, visual freeze
 
 **Layout Land**:
-The first deliverable: put the sibling App Layout on `master` (`portfolio-next/` + `portfolio-react/`) with Content Parity, without switching production hosting yet.
+Land the sibling App Layout on `master` (`portfolio-next/` + `portfolio-react/`) with Content Parity, without switching production hosting. Status: complete on this branch once CI deploys from `portfolio-react/` and both apps build.
 _Avoid_: Cutover (until hosting is decided and production is switched)
 
 **App Layout**:

@@ -1,58 +1,76 @@
 # Portfolio
 
-This is the source code for the portfolio website hosted at [adibahsan.github.io](https://adibahsan.github.io/). It's a front-end web application built with React, TypeScript, and other modern web technologies. This is a fork of the original repo at [João Túlio's Github](https://github.com/joaotuliojt/portfolio-react).
+Personal developer portfolio for [adibahsan.github.io](https://adibahsan.github.io/). Forked from [João Túlio's portfolio-react](https://github.com/joaotuliojt/portfolio-react).
 
-## Table of Contents
+## App Layout
 
-- [Getting Started](#getting-started)
-- [Prerequisites](#prerequisites)
-- [Installation](#installation)
-- [Deployment](#deployment)
-- [Built With](#built-with)
-- [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
+This repository uses a sibling **App Layout** (see `CONTEXT.md`):
+
+| Directory | App | Role today |
+| --- | --- | --- |
+| `portfolio-react/` | Create React App **Live Portfolio** | Served by GitHub Pages (`gh-pages`) |
+| `portfolio-next/` | Next.js **Next Portfolio** | Content Parity ready; Vercel **Cutover** is deferred (ADR-0001) |
+
+There is no runnable CRA app at the repository root.
+
+**Layout Land** (sibling apps on the default branch, Pages still on CRA) is the current deliverable. Production Cutover to Vercel is intentionally later — do not assume this repo root is the Live Portfolio.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
 ### Prerequisites
 
-- Node.js (v20.0.0 or higher)
-- pnpm or yarn
+- Node.js 20+
+- [pnpm](https://pnpm.io/)
 
-### Installation
+### Live Portfolio (CRA)
 
-1. Clone the repo
-   ```sh
-   git clone git@github.com:adibahsan/adibahsan.github.io.git
-   ```
-2. Install NPM packages
 ```sh
-   pnpm install
-   ```
+cd portfolio-react
+pnpm install
+pnpm start
+```
+
+Production build:
+
+```sh
+cd portfolio-react
+pnpm run build
+```
+
+### Next Portfolio
+
+```sh
+cd portfolio-next
+pnpm install
+pnpm dev
+```
+
+Production build:
+
+```sh
+cd portfolio-next
+pnpm run build
+```
 
 ## Deployment
-The deployment is automatically done through GitHub Actions. The deployment workflow is defined in `.github/workflows/deploy.yml`. The workflow is triggered on every push or merged pull requests to the `master` branch. The workflow builds the project and deploys it to the `gh-pages` branch, which is then served by GitHub Pages.
+
+GitHub Actions (`.github/workflows/master.yml`) installs and builds **`portfolio-react/`** on pushes to `master`, then publishes `portfolio-react/build` to the `gh-pages` branch for GitHub Pages.
+
+Vercel project setup and DNS Cutover are out of scope until Cutover work begins (see `docs/adr/0001-next-portfolio-on-vercel.md`).
 
 ## Built With
 
-The project is built with React, TypeScript, and Styled Components.
+- **Live Portfolio:** React, TypeScript, Styled Components
+- **Next Portfolio:** Next.js App Router, React, TypeScript, Styled Components, Framer Motion
 
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated. To contribute, fork the Project, create your Feature Branch, commit your Changes, push to the Branch, and open a Pull Request.
+Fork the project, create a feature branch, commit, push, and open a pull request.
 
 ## License
 
-The project is distributed under the MIT License. See LICENSE for more information.
-
-## Acknowledgments
-
-The project uses React, TypeScript, and Styled Components.
+MIT — see LICENSE for details.
 
 ## Live URL
 
-You can view the live project at (adibahsan.github.io)[https://adibahsan.github.io/]
-```
+https://adibahsan.github.io/

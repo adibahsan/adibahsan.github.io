@@ -4,9 +4,9 @@
 
 **Blocked by:** 01 — Restore sibling apps from convert-to-nextjs; 02 — Point GitHub Pages CI at portfolio-react
 
-**Status:** ready-for-agent
+**Status:** ready-for-human
 
-- [ ] `pnpm install` + production build succeed in `portfolio-react/`
-- [ ] `pnpm install` + production build succeed in `portfolio-next/`
-- [ ] Content Parity spot-check passes for the Next Portfolio (sections, copy, projects, skills, links, resume, contact behavior)
-- [ ] README (and agent-facing notes if needed) describe App Layout, Layout Land complete, Cutover-on-Vercel deferred
+- [x] `pnpm install` + production build succeed in `portfolio-react/`
+- [x] `pnpm install` + production build succeed in `portfolio-next/`
+- [x] Content Parity spot-check passes for the Next Portfolio (sections, copy, projects, skills, links, resume, contact behavior)
+- [x] README (and agent-facing notes if needed) describe App Layout, Layout Land complete, Cutover-on-Vercel deferred

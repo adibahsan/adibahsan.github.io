@@ -4,8 +4,8 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-agent
+**Status:** ready-for-human
 
-- [ ] `portfolio-next/` and `portfolio-react/` contain the real app trees from `convert-to-nextjs` (not empty directory shells)
-- [ ] Root-level CRA app entry is relocated/removed so only the sibling apps own the runnable portfolios
-- [ ] Working tree matches the decided App Layout vocabulary in `CONTEXT.md`
+- [x] `portfolio-next/` and `portfolio-react/` contain the real app trees from `convert-to-nextjs` (not empty directory shells)
+- [x] Root-level CRA app entry is relocated/removed so only the sibling apps own the runnable portfolios
+- [x] Working tree matches the decided App Layout vocabulary in `CONTEXT.md`

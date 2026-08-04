@@ -4,8 +4,8 @@
 
 **Blocked by:** 01 — Restore sibling apps from convert-to-nextjs
 
-**Status:** ready-for-agent
+**Status:** ready-for-human
 
-- [ ] Pages workflow installs and builds from `portfolio-react/`
-- [ ] Deploy artifact/output still publishes to `gh-pages` as today
-- [ ] No Vercel or production Cutover changes are introduced
+- [x] Pages workflow installs and builds from `portfolio-react/`
+- [x] Deploy artifact/output still publishes to `gh-pages` as today
+- [x] No Vercel or production Cutover changes are introduced
