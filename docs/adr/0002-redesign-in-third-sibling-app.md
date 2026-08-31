@@ -12,7 +12,7 @@ The supplied design is specified entirely in Tailwind utilities, so it ships wit
 
 ## Consequences
 
-- The repo runs three independent pnpm apps with three lockfiles and no workspace. `App Layout` now describes shape only; `Production Role` carries which app serves what.
+- The repo runs three independent pnpm apps, each installed from its own lockfile, with no repo-level workspace linking them. (The Next Portfolio carries a single-package `pnpm-workspace.yaml` purely to approve build dependencies; the 3D Portfolio is expected to need the same for its own toolchain.) `App Layout` now describes shape only; `Production Role` carries which app serves what.
 - Three styling systems coexist: styled-components in the Live and Next Portfolios, Tailwind in the 3D Portfolio.
 - The 3D Portfolio has no Production Role and is not a Cutover candidate until Reskin replaces its Placeholder Identity.
 - Adopting the Redesign later requires a decision that supersedes Content Parity's exclusion of it. That does not happen implicitly by building this app.
