@@ -167,17 +167,36 @@ All sections use Tailwind's default breakpoints (sm: 640px, md: 768px, lg: 1024p
 
 ## Deviations recorded in the spec
 
-Three points where the implementation deliberately departs from the text above. The first two are
-decided in `spec.md`; the third was signed off by the site owner during ticket 01. They are noted
-here so the difference is not read as an error during fidelity review.
+Four points where the implementation deliberately departs from the text above. The first two are
+decided in `spec.md`; the third was signed off by the site owner during ticket 01 and the fourth at
+the ticket 07 fidelity review. They are noted here so the difference is not read as an error during
+fidelity review.
 
 - **`lucide-react` is dropped.** It appears in KEY DEPENDENCIES but no section references an icon.
 - **The tripled marquee rows are travel buffer, not an infinite loop.** Across the section's scroll
-  pass row 1 travels roughly -200px to +60px, so tripling keeps the edges off-screen. No modulo wrap
-  is required, and adding one would be a regression.
+  pass row 1 travels roughly -200px to +60px, so three copies are far wider than the distance
+  covered. No modulo wrap is required, and adding one would be a regression. (What actually keeps
+  both ends off-screen is the parking shift below; tripling is what gives that shift something to
+  park into.)
 - **`--` in the supplied text is read as an em dash.** The supplied block is ASCII-normalised
   throughout — it writes `identities -- from logos to full brand systems --` and `"Contact" --
   evenly spaced`, where `--` is unambiguously an em dash, and it annotates typography only where it
   matters ("curly apostrophe via `&apos;`"). So the page title ships as `Jack — 3D Creator`, and the
   services copy in sections 4 and 5 takes em dashes on the same reading. Signed off by the site
   owner; applies wherever `--` appears in running text above.
+
+  **This reading stops at `--`.** At the ticket 07 review the site owner ruled that it does *not*
+  extend to the apostrophe: `Hi, i'm jack` and `Let's build something incredible together!` ship
+  with a straight apostrophe (U+0027), which is both what this file writes and what its `&apos;`
+  produces in JSX. A future session should not "restore" a curly one by analogy with the em dash.
+
+- **The marquee rows are parked one copy-width to the left**, so the rendered transform is
+  `translateX(offset − 200 − W/3)` where section 2 above writes `translateX(offset − 200)`. The
+  written formula leaves each row's leading edge exposed: measured live, row 1's edge reaches 288px
+  inside the viewport at 1920 and row 2's is visible from the first frame of the pass, which
+  contradicts this file's own "tripled for seamless scrolling". Parking moves the travel inside the
+  middle copy, so neither end ever comes into view. The three copies are identical, so the visible
+  band is the same pixels either way. Signed off by the site owner at the ticket 07 review.
+
+  `W/3` lands a few px short of exactly one copy, because the row's width includes gaps the division
+  does not know about. Nothing wraps, so there is no seam to align and the shortfall is invisible.

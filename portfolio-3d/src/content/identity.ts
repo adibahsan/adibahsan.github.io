@@ -9,8 +9,13 @@
 export const navLinks = ['About', 'Price', 'Projects', 'Contact'] as const
 
 export const hero = {
-  /** Lowercase "i" and the curly apostrophe are both as specified. */
-  heading: 'Hi, i’m jack',
+  /**
+   * Lowercase "i" as specified, and a straight apostrophe (U+0027) — which is
+   * both what `design-spec.md` writes and what its `&apos;` produces in JSX.
+   * The site owner settled this at the fidelity review: the em-dash reading of
+   * `--` does not extend to the apostrophe. Do not "restore" a curly one.
+   */
+  heading: "Hi, i'm jack",
   tagline: 'a 3d creator driven by crafting striking and unforgettable projects',
   portrait: {
     src: 'https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png',
@@ -54,11 +59,11 @@ export const marqueeImages = [
 export const about = {
   heading: 'About me',
   /**
-   * Lowercase "i" twice and the curly apostrophe are as specified, matching the
-   * hero headline's treatment of the same two characters.
+   * Lowercase "i" twice and a straight apostrophe, matching the hero headline's
+   * treatment of the same two characters. Verbatim from `design-spec.md`.
    */
   paragraph:
-    'With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let’s build something incredible together!',
+    "With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!",
   ornaments: {
     moon: 'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png',
     object:
