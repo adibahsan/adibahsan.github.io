@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { marqueeAtRest, marqueeShift } from './scroll'
+import { characterOpacity, marqueeAtRest, marqueeShift } from './scroll'
 
 /**
  * A section whose top sits 900px down the document, viewed through a 900px
@@ -53,5 +53,55 @@ describe('marqueeShift', () => {
 
     // The extra 300px of viewport is 300px of the section's pass already spent.
     expect(tall.rightward).toBeCloseTo(-110)
+  })
+})
+
+/**
+ * A ten-character paragraph, so each character owns exactly a tenth of the
+ * pass and the arithmetic can be read off by eye.
+ */
+const total = 10
+
+const opacityAt = (index: number, progress: number) =>
+  characterOpacity(index, total, progress)
+
+describe('characterOpacity', () => {
+  it('holds every character dimmed before the pass begins', () => {
+    expect(opacityAt(0, 0)).toBe(0.2)
+    expect(opacityAt(total - 1, 0)).toBe(0.2)
+  })
+
+  it('holds every character lit once the pass has finished', () => {
+    expect(opacityAt(0, 1)).toBe(1)
+    expect(opacityAt(total - 1, 1)).toBe(1)
+  })
+
+  it('gives the first character the opening slice of the pass', () => {
+    // Half a tenth in is half way through the first character's own window.
+    expect(opacityAt(0, 0.05)).toBeCloseTo(0.6)
+    expect(opacityAt(0, 0.1)).toBeCloseTo(1)
+  })
+
+  it('gives the last character the closing slice, and not a moment before', () => {
+    expect(opacityAt(total - 1, 0.9)).toBeCloseTo(0.2)
+    expect(opacityAt(total - 1, 0.95)).toBeCloseTo(0.6)
+  })
+
+  it('sweeps forward: at any point no character is lighter than the one before it', () => {
+    for (const progress of [0, 0.15, 0.4, 0.55, 0.8, 1]) {
+      for (let index = 1; index < total; index += 1) {
+        expect(opacityAt(index, progress)).toBeLessThanOrEqual(opacityAt(index - 1, progress))
+      }
+    }
+  })
+
+  it('leaves a character lit once the sweep has passed it', () => {
+    expect(opacityAt(3, 0.4)).toBeCloseTo(1)
+    expect(opacityAt(3, 0.7)).toBeCloseTo(1)
+  })
+
+  it('clamps progress that runs outside the pass at either end', () => {
+    expect(opacityAt(0, -0.5)).toBe(0.2)
+    expect(opacityAt(total - 1, 1.5)).toBe(1)
   })
 })

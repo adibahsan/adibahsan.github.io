@@ -45,3 +45,26 @@ export const marqueeImages = [
   'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
   'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
 ] as const
+
+/**
+ * The about section's copy and its four pieces of decorative art. The corners
+ * they sit in and the edges they arrive from are the section's business; the
+ * art itself is identity, and Reskin swaps these four URLs.
+ */
+export const about = {
+  heading: 'About me',
+  /**
+   * Lowercase "i" twice and the curly apostrophe are as specified, matching the
+   * hero headline's treatment of the same two characters.
+   */
+  paragraph:
+    'With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let’s build something incredible together!',
+  ornaments: {
+    moon: 'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png',
+    object:
+      'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png',
+    lego: 'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png',
+    group:
+      'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png',
+  },
+} as const

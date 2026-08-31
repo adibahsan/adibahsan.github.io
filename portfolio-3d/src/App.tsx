@@ -1,3 +1,4 @@
+import { AboutSection } from './sections/AboutSection'
 import { HeroSection } from './sections/HeroSection'
 import { MarqueeSection } from './sections/MarqueeSection'
 
@@ -12,6 +13,7 @@ export default function App() {
     <main className="min-h-screen w-full overflow-x-clip bg-ground">
       <HeroSection />
       <MarqueeSection />
+      <AboutSection />
     </main>
   )
 }

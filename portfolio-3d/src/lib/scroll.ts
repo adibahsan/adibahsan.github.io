@@ -40,3 +40,29 @@ export function marqueeShift(
  * the formula rather than written out, so it cannot drift away from it.
  */
 export const marqueeAtRest: MarqueeShift = marqueeShift(0, 0, 0)
+
+/** Opacity of a character the reveal has not reached yet. */
+const DIMMED = 0.2
+
+/** Opacity of a character the reveal has passed. */
+const LIT = 1
+
+const clamp01 = (value: number) => Math.min(1, Math.max(0, value))
+
+/**
+ * How lit one character of a scroll-revealed paragraph is.
+ *
+ * The paragraph's pass is divided into one window per character, so the reveal
+ * sweeps from the first character to the last at a steady rate: character
+ * `index` brightens from {@link DIMMED} to {@link LIT} between `index / total`
+ * and `(index + 1) / total` of the way through, and holds at either end outside
+ * its own window.
+ */
+export function characterOpacity(index: number, total: number, progress: number): number {
+  // Progress restated in characters — 0 at the start of the paragraph, `total`
+  // at the end. How far it has run past this character's own place in the line
+  // is how far through that character's window the sweep has come.
+  const through = clamp01(progress * total - index)
+
+  return DIMMED + (LIT - DIMMED) * through
+}
