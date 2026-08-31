@@ -1,10 +1,15 @@
+import { HeroSection } from './sections/HeroSection'
+
 /**
- * The page wrapper. Sections land here in later tickets; for now it establishes
- * the ground colour and the horizontal-overflow clip.
+ * The page wrapper. Remaining sections land here in later tickets.
  *
- * Clipped rather than hidden: hiding overflow would make this an ancestor scroll
- * container and break the sticky project cards further down the page.
+ * Clipped rather than hidden: hiding overflow would make this an ancestor
+ * scroll container and break the sticky project cards further down the page.
  */
 export default function App() {
-  return <main className="min-h-screen w-full overflow-x-clip bg-ground" />
+  return (
+    <main className="min-h-screen w-full overflow-x-clip bg-ground">
+      <HeroSection />
+    </main>
+  )
 }
