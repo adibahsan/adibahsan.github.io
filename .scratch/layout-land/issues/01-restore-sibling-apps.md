@@ -4,7 +4,7 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-human
+**Status:** done
 
 - [x] `portfolio-next/` and `portfolio-react/` contain the real app trees from `convert-to-nextjs` (not empty directory shells)
 - [x] Root-level CRA app entry is relocated/removed so only the sibling apps own the runnable portfolios

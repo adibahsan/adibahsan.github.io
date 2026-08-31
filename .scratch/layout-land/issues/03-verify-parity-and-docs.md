@@ -4,7 +4,7 @@
 
 **Blocked by:** 01 — Restore sibling apps from convert-to-nextjs; 02 — Point GitHub Pages CI at portfolio-react
 
-**Status:** ready-for-human
+**Status:** done
 
 - [x] `pnpm install` + production build succeed in `portfolio-react/`
 - [x] `pnpm install` + production build succeed in `portfolio-next/`

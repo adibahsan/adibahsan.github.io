@@ -18,6 +18,22 @@ Create a new file under `.scratch/<feature-slug>/` (creating the directory if ne
 
 Read the file at the referenced path. The user will normally pass the path or the issue number directly.
 
+## Completing a ticket
+
+A ticket is **done** when its work is committed. Closing one out means, in the same commit as the work:
+
+- Tick every acceptance checkbox
+- Append what was built — and any scope decisions taken — to the `## Comments` section
+- Set the `Status:` line to `done`
+
+## The frontier
+
+The **frontier** is every issue that is **open** and whose **blockers are all done** — the set that can be picked up right now. A linear chain has a frontier of one; a fan-out has several.
+
+A ticket counts as done if its `Status:` is `done`, **or** if it has acceptance criteria with none left unchecked. The second test is a fallback for tickets finished before this convention existed, and it stops a runner handing out the same finished ticket twice when a status flip gets missed.
+
+`~/.claude/skills/next-ticket/frontier.sh <issues-dir>` computes this and prints the ticket to work next.
+
 ## Wayfinding operations
 
 Used by `/wayfinder`. The **map** is a file with one **child** file per ticket.

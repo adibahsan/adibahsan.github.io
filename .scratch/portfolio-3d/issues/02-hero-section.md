@@ -6,7 +6,7 @@ This is the first section to need the shared entrance-animation wrapper, the mag
 
 **Blocked by:** 01 — Scaffold the 3D Portfolio app
 
-**Status:** ready-for-human
+**Status:** done
 
 - [x] The navigation shows the four labels from `design-spec.md`, evenly distributed, with the specified hover treatment
 - [x] The headline fills the viewport width as a single unbroken line at every breakpoint tier, rendered in the gradient treatment

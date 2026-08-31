@@ -4,7 +4,7 @@
 
 **Blocked by:** None — can start immediately.
 
-**Status:** ready-for-human
+**Status:** done
 
 - [x] The app installs and produces a production build from its own directory, with its own lockfile, matching how the other two apps are installed under App Layout
 - [x] Build dependencies the toolchain requires are pre-approved, so a clean install completes without an interactive prompt

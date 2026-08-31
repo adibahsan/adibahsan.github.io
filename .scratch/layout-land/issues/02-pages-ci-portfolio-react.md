@@ -4,7 +4,7 @@
 
 **Blocked by:** 01 — Restore sibling apps from convert-to-nextjs
 
-**Status:** ready-for-human
+**Status:** done
 
 - [x] Pages workflow installs and builds from `portfolio-react/`
 - [x] Deploy artifact/output still publishes to `gh-pages` as today

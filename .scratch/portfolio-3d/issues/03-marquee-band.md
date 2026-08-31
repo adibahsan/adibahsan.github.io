@@ -6,7 +6,7 @@ This section adds the first function to the pure scroll-arithmetic module. It ne
 
 **Blocked by:** 01 — Scaffold the 3D Portfolio app
 
-**Status:** ready-for-human
+**Status:** done
 
 - [x] Two rows render, split from the image list in `design-spec.md` as specified
 - [x] The rows travel in opposite directions as the page scrolls
