@@ -68,3 +68,43 @@ export const about = {
       'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png',
   },
 } as const
+
+/**
+ * The services panel's five offerings, in the order the design lists them.
+ *
+ * The displayed ordinal is not stored: it is the row's position, so Reskin can
+ * add, drop or reorder a service without renumbering the list by hand.
+ *
+ * The em dashes in "Branding" are the `--` of `design-spec.md` read as em
+ * dashes, per the deviation recorded there.
+ */
+export const services = {
+  heading: 'Services',
+  items: [
+    {
+      name: '3D Modeling',
+      description:
+        'Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.',
+    },
+    {
+      name: 'Rendering',
+      description:
+        'High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.',
+    },
+    {
+      name: 'Motion Design',
+      description:
+        'Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.',
+    },
+    {
+      name: 'Branding',
+      description:
+        'Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear and memorable presence.',
+    },
+    {
+      name: 'Web Design',
+      description:
+        'Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.',
+    },
+  ],
+} as const

@@ -1,6 +1,7 @@
 import { AboutSection } from './sections/AboutSection'
 import { HeroSection } from './sections/HeroSection'
 import { MarqueeSection } from './sections/MarqueeSection'
+import { ServicesSection } from './sections/ServicesSection'
 
 /**
  * The page wrapper. Remaining sections land here in later tickets.
@@ -14,6 +15,7 @@ export default function App() {
       <HeroSection />
       <MarqueeSection />
       <AboutSection />
+      <ServicesSection />
     </main>
   )
 }
