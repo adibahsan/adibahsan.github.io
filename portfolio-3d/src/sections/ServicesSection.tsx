@@ -1,4 +1,5 @@
 import { FadeIn } from '../components/FadeIn'
+import { SectionHeading } from '../components/SectionHeading'
 import { services } from '../content/identity'
 
 /** Seconds each row waits behind the one above it. */
@@ -16,14 +17,9 @@ const STAGGER = 0.1
 export function ServicesSection() {
   return (
     <section className="rounded-t-[40px] bg-white px-5 py-20 text-ground sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32">
-      <FadeIn
-        as="h2"
-        y={40}
-        className="mb-16 text-center font-black uppercase leading-none tracking-tight sm:mb-20 md:mb-28"
-        style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
-      >
-        {services.heading}
-      </FadeIn>
+      {/* No gradient here: on the inverted panel the heading takes the ink
+          colour the section already carries. */}
+      <SectionHeading className="mb-16 sm:mb-20 md:mb-28">{services.heading}</SectionHeading>
 
       {/*
         `divide-y` rules between the rows rather than around them, which is what

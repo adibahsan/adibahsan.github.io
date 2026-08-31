@@ -1,6 +1,7 @@
 import { AnimatedText } from '../components/AnimatedText'
 import { ContactButton } from '../components/ContactButton'
 import { FadeIn } from '../components/FadeIn'
+import { SectionHeading } from '../components/SectionHeading'
 import { about } from '../content/identity'
 
 /** How far off to the side a piece of art starts, in px. */
@@ -69,14 +70,7 @@ export function AboutSection() {
 
       <div className="flex flex-col items-center gap-16 sm:gap-20 md:gap-24">
         <div className="flex flex-col items-center gap-10 sm:gap-14 md:gap-16">
-          <FadeIn
-            as="h2"
-            y={40}
-            className="hero-heading text-center font-black uppercase leading-none tracking-tight"
-            style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
-          >
-            {about.heading}
-          </FadeIn>
+          <SectionHeading className="hero-heading">{about.heading}</SectionHeading>
 
           <AnimatedText
             text={about.paragraph}

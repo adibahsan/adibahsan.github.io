@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest'
 
-import { characterOpacity, marqueeAtRest, marqueeShift } from './scroll'
+import {
+  characterOpacity,
+  marqueeAtRest,
+  marqueeShift,
+  stackedCardScale,
+  stackedCardShrinkStart,
+} from './scroll'
 
 /**
  * A section whose top sits 900px down the document, viewed through a 900px
@@ -103,5 +109,74 @@ describe('characterOpacity', () => {
   it('clamps progress that runs outside the pass at either end', () => {
     expect(opacityAt(0, -0.5)).toBe(0.2)
     expect(opacityAt(total - 1, 1.5)).toBe(1)
+  })
+})
+
+/** The design's stack: three project cards. */
+const cards = 3
+
+const scalesFor = (total: number) =>
+  Array.from({ length: total }, (_, index) => stackedCardScale(index, total))
+
+describe('stackedCardScale', () => {
+  it('gives the design its three scales exactly', () => {
+    expect(scalesFor(cards)).toEqual([0.94, 0.97, 1])
+  })
+
+  it('leaves the last card at full size, whatever the count', () => {
+    for (const total of [1, 2, 3, 5, 8]) {
+      expect(stackedCardScale(total - 1, total)).toBe(1)
+    }
+  })
+
+  it('rises with index, so the first card is the smallest', () => {
+    // The sequence reversed is just as plausible on screen: cards receding into
+    // the distance either way. This is the assertion that tells them apart.
+    for (const total of [2, 3, 5, 8]) {
+      const scales = scalesFor(total)
+
+      for (let index = 1; index < total; index += 1) {
+        expect(scales[index]).toBeGreaterThan(scales[index - 1])
+      }
+    }
+  })
+
+  it('steps by three hundredths between neighbours', () => {
+    expect(stackedCardScale(1, cards) - stackedCardScale(0, cards)).toBeCloseTo(0.03)
+    expect(stackedCardScale(2, cards) - stackedCardScale(1, cards)).toBeCloseTo(0.03)
+  })
+
+  it('holds a lone card at full size, with nothing to recede behind', () => {
+    expect(stackedCardScale(0, 1)).toBe(1)
+  })
+})
+
+describe('stackedCardShrinkStart', () => {
+  it('divides the pass evenly between the cards', () => {
+    expect(stackedCardShrinkStart(0, cards)).toBe(0)
+    expect(stackedCardShrinkStart(1, cards)).toBeCloseTo(1 / 3)
+    expect(stackedCardShrinkStart(2, cards)).toBeCloseTo(2 / 3)
+  })
+
+  it('starts the first card shrinking as the pass opens', () => {
+    for (const total of [1, 3, 8]) {
+      expect(stackedCardShrinkStart(0, total)).toBe(0)
+    }
+  })
+
+  it('leaves every card a slice of the pass to shrink across', () => {
+    for (const total of [2, 3, 5, 8]) {
+      for (let index = 0; index < total; index += 1) {
+        expect(stackedCardShrinkStart(index, total)).toBeLessThan(1)
+      }
+    }
+  })
+
+  it('starts each card later than the one before it', () => {
+    for (let index = 1; index < cards; index += 1) {
+      expect(stackedCardShrinkStart(index, cards)).toBeGreaterThan(
+        stackedCardShrinkStart(index - 1, cards),
+      )
+    }
   })
 })

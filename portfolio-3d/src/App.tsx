@@ -1,10 +1,11 @@
 import { AboutSection } from './sections/AboutSection'
 import { HeroSection } from './sections/HeroSection'
 import { MarqueeSection } from './sections/MarqueeSection'
+import { ProjectsSection } from './sections/ProjectsSection'
 import { ServicesSection } from './sections/ServicesSection'
 
 /**
- * The page wrapper. Remaining sections land here in later tickets.
+ * The page wrapper, holding the five sections in the order the design gives.
  *
  * Clipped rather than hidden: hiding overflow would make this an ancestor
  * scroll container and break the sticky project cards further down the page.
@@ -16,6 +17,7 @@ export default function App() {
       <MarqueeSection />
       <AboutSection />
       <ServicesSection />
+      <ProjectsSection />
     </main>
   )
 }

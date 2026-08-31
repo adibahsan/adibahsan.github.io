@@ -66,3 +66,31 @@ export function characterOpacity(index: number, total: number, progress: number)
 
   return DIMMED + (LIT - DIMMED) * through
 }
+
+/** How much smaller each stacked card sits than the one that follows it. */
+const STACK_STEP = 0.03
+
+/**
+ * The scale a stacked card settles at once every card behind it has arrived.
+ *
+ * The last card ends at full size and each earlier one a step smaller, so the
+ * sequence rises with index: 0.94, 0.97, 1 for three cards. Reversing it still
+ * produces a plausible-looking stack, which is why this is asserted numerically
+ * rather than read off the screen.
+ */
+export function stackedCardScale(index: number, total: number): number {
+  return 1 - (total - 1 - index) * STACK_STEP
+}
+
+/**
+ * How far through the stack's scroll pass a card starts shrinking.
+ *
+ * The pass is divided evenly between the cards, so each holds full size until
+ * its own slice comes up and then recedes across everything that remains — a
+ * card reaches its target scale exactly as the pass ends. Dividing by the count
+ * rather than by the gaps leaves a final slice with no card behind it to arrive,
+ * which is what keeps the topmost card at full size throughout.
+ */
+export function stackedCardShrinkStart(index: number, total: number): number {
+  return index / total
+}
