@@ -1,4 +1,5 @@
 import { HeroSection } from './sections/HeroSection'
+import { MarqueeSection } from './sections/MarqueeSection'
 
 /**
  * The page wrapper. Remaining sections land here in later tickets.
@@ -10,6 +11,7 @@ export default function App() {
   return (
     <main className="min-h-screen w-full overflow-x-clip bg-ground">
       <HeroSection />
+      <MarqueeSection />
     </main>
   )
 }
