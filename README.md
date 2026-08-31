@@ -10,8 +10,11 @@ This repository uses a sibling **App Layout** (see `CONTEXT.md`):
 | --- | --- | --- |
 | `portfolio-react/` | Create React App **Live Portfolio** | Served by GitHub Pages (`gh-pages`) |
 | `portfolio-next/` | Next.js **Next Portfolio** | Content Parity ready; Vercel **Cutover** is deferred (ADR-0001) |
+| `portfolio-3d/` | Vite **3D Portfolio** | **Redesign** candidate; no **Production Role**, not deployed (ADR-0002) |
 
 There is no runnable CRA app at the repository root.
+
+The **3D Portfolio** is not served anywhere and is not a **Cutover** candidate. It is built from a supplied design and still carries that design's **Placeholder Identity** — the "Jack" name and copy are deliberate, not a mistake. It becomes eligible for consideration only after a **Reskin** replaces them with Adib's content.
 
 **Layout Land** (sibling apps on the default branch, Pages still on CRA) is the current deliverable. Production Cutover to Vercel is intentionally later — do not assume this repo root is the Live Portfolio.
 
@@ -52,6 +55,22 @@ cd portfolio-next
 pnpm run build
 ```
 
+### 3D Portfolio
+
+```sh
+cd portfolio-3d
+pnpm install
+pnpm dev
+```
+
+Production build and tests:
+
+```sh
+cd portfolio-3d
+pnpm run build
+pnpm test
+```
+
 ## Deployment
 
 GitHub Actions (`.github/workflows/master.yml`) installs and builds **`portfolio-react/`** on pushes to `master`, then publishes `portfolio-react/build` to the `gh-pages` branch for GitHub Pages.
@@ -62,6 +81,7 @@ Vercel project setup and DNS Cutover are out of scope until Cutover work begins 
 
 - **Live Portfolio:** React, TypeScript, Styled Components
 - **Next Portfolio:** Next.js App Router, React, TypeScript, Styled Components, Framer Motion
+- **3D Portfolio:** Vite, React, TypeScript, Tailwind CSS, Framer Motion, Vitest
 
 ## Contributing
 

@@ -167,10 +167,17 @@ All sections use Tailwind's default breakpoints (sm: 640px, md: 768px, lg: 1024p
 
 ## Deviations recorded in the spec
 
-Two points where the implementation deliberately departs from the text above. Both are decided in
-`spec.md`; they are noted here so the difference is not read as an error during fidelity review.
+Three points where the implementation deliberately departs from the text above. The first two are
+decided in `spec.md`; the third was signed off by the site owner during ticket 01. They are noted
+here so the difference is not read as an error during fidelity review.
 
 - **`lucide-react` is dropped.** It appears in KEY DEPENDENCIES but no section references an icon.
 - **The tripled marquee rows are travel buffer, not an infinite loop.** Across the section's scroll
   pass row 1 travels roughly -200px to +60px, so tripling keeps the edges off-screen. No modulo wrap
   is required, and adding one would be a regression.
+- **`--` in the supplied text is read as an em dash.** The supplied block is ASCII-normalised
+  throughout — it writes `identities -- from logos to full brand systems --` and `"Contact" --
+  evenly spaced`, where `--` is unambiguously an em dash, and it annotates typography only where it
+  matters ("curly apostrophe via `&apos;`"). So the page title ships as `Jack — 3D Creator`, and the
+  services copy in sections 4 and 5 takes em dashes on the same reading. Signed off by the site
+  owner; applies wherever `--` appears in running text above.

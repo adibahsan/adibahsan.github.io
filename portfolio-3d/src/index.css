@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body,
+  #root {
+    background: theme('colors.ground');
+  }
+
+  /* Headings inherit this; Tailwind's preflight sets them to font-family: inherit. */
+  body {
+    font-family: theme('fontFamily.sans');
+  }
+}
+
+/*
+ * The shared display-heading treatment, deliberately outside @layer components
+ * so it ships whether or not a section is currently using it.
+ */
+.hero-heading {
+  background: linear-gradient(180deg, #646973 0%, #bbccd7 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
