@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, type RefObject } from 'react'
 
-import { marqueeImages } from '../content/identity'
+import { marqueeImages, sectionIds } from '../content/identity'
 import { marqueeAtRest, marqueeShift } from '../lib/scroll'
 
 /** The design splits the 21 previews across the two rows: first 11, then the rest. */
@@ -114,7 +114,11 @@ export function MarqueeSection() {
   }, [])
 
   return (
-    <section ref={band} className="flex flex-col gap-3 bg-ground pb-10 pt-24 sm:pt-32 md:pt-40">
+    <section
+      ref={band}
+      id={sectionIds.marquee}
+      className="flex flex-col gap-3 bg-ground pb-10 pt-24 sm:pt-32 md:pt-40"
+    >
       <MarqueeRow
         images={rightwardImages}
         restingShift={marqueeAtRest.rightward}

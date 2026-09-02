@@ -2,7 +2,7 @@ import { AnimatedText } from '../components/AnimatedText'
 import { ContactButton } from '../components/ContactButton'
 import { FadeIn } from '../components/FadeIn'
 import { SectionHeading } from '../components/SectionHeading'
-import { about } from '../content/identity'
+import { about, sectionIds } from '../content/identity'
 
 /** How far off to the side a piece of art starts, in px. */
 const DRIFT = 80
@@ -57,7 +57,10 @@ const ornaments: readonly Ornament[] = [
  */
 export function AboutSection() {
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center px-5 py-20 sm:px-8 md:px-10">
+    <section
+      id={sectionIds.about}
+      className="relative flex min-h-screen flex-col items-center justify-center px-5 py-20 sm:px-8 md:px-10"
+    >
       {ornaments.map(({ src, className, delay, x }) => (
         // The corner and the size go on the wrapper, as they do for the hero
         // portrait: it leaves the entrance a plain slide the animation owns

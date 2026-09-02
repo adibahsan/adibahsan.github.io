@@ -1,12 +1,52 @@
 /**
- * The Placeholder Identity: the fictional "Jack" the supplied design describes.
+ * The page's content, and the structure the nav navigates.
  *
- * Deliberately retained for this effort and gathered here rather than scattered
- * through markup, so the later Reskin is a bounded change — swap these values,
- * not the components. Copy is verbatim from `.scratch/portfolio-3d/design-spec.md`.
+ * Most of what follows is still the Placeholder Identity — the fictional "Jack"
+ * the supplied design describes — which Reskin's section tickets replace one at
+ * a time. It is gathered here rather than scattered through markup so that each
+ * of those tickets has one file to work in; several of them reshape the section
+ * around the content as well, so this is a seam, not a swap. Copy not yet
+ * replaced is verbatim from `.scratch/portfolio-3d/design-spec.md`.
  */
 
-export const navLinks = ['About', 'Price', 'Projects', 'Contact'] as const
+/**
+ * The page's sections, by the identifier each one anchors at.
+ *
+ * These live here, beside the nav that points at them, rather than as literals
+ * in the section components: two strings that must match are one edit away from
+ * drifting when they sit in different files, and holding both makes "every nav
+ * target resolves" checkable as data, without rendering anything.
+ *
+ * That check reaches the nav and no further. Whether a section actually renders
+ * the identifier it is given is not testable without a DOM, so adding an entry
+ * here does not mean a section answers to it. Contact is left out on those
+ * grounds — the section arrives with the ticket that builds it, and adding the
+ * identifier ahead of the section would buy an anchor into thin air.
+ */
+export const sectionIds = {
+  hero: 'hero',
+  marquee: 'marquee',
+  about: 'about',
+  capabilities: 'capabilities',
+  projects: 'projects',
+} as const
+
+/**
+ * The hero nav, in the order it reads across the page.
+ *
+ * `Price` is gone: it presupposed the freelance sales the supplied design was
+ * built around, and this is not a shopfront. Three items is a way-station — the
+ * design distributes four across the full width, and Contact restores the count
+ * once there is a section for it to reach.
+ *
+ * Targets are taken from {@link sectionIds} rather than written out. A literal
+ * would compile just as happily, which is why the contract test sweeps them.
+ */
+export const navItems = [
+  { label: 'About', target: sectionIds.about },
+  { label: 'Capabilities', target: sectionIds.capabilities },
+  { label: 'Projects', target: sectionIds.projects },
+] as const
 
 export const hero = {
   /**

@@ -17,6 +17,21 @@
     background: theme('colors.ground');
   }
 
+  /*
+   * What makes the nav anchors glide rather than jump. Kept here rather than in
+   * a click handler: the browser's own scrolling needs nothing held in step
+   * with the page at each tier, and it is what honours the preference below.
+   */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   /* Headings inherit this; Tailwind's preflight sets them to font-family: inherit. */
   body {
     font-family: theme('fontFamily.sans');

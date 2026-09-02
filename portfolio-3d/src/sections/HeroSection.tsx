@@ -1,7 +1,7 @@
 import { ContactButton } from '../components/ContactButton'
 import { FadeIn } from '../components/FadeIn'
 import { Magnet } from '../components/Magnet'
-import { hero, navLinks } from '../content/identity'
+import { hero, navItems, sectionIds } from '../content/identity'
 
 /**
  * The opening screen: nav, a headline spanning the full viewport width, a
@@ -13,16 +13,22 @@ import { hero, navLinks } from '../content/identity'
  */
 export function HeroSection() {
   return (
-    <section className="relative flex h-screen flex-col overflow-x-clip">
+    <section id={sectionIds.hero} className="relative flex h-screen flex-col overflow-x-clip">
       <FadeIn
         as="nav"
         y={-20}
         className="flex justify-between px-6 pt-6 text-sm font-medium uppercase tracking-wider text-foreground md:px-10 md:pt-8 md:text-lg lg:text-[1.4rem]"
       >
-        {navLinks.map((label) => (
-          // No destinations: the design gives labels only, and the sections
-          // these would point at are named by Reskin, not by this build.
-          <a key={label} className="transition-opacity duration-200 hover:opacity-70">
+        {navItems.map(({ label, target }) => (
+          // A plain fragment anchor, eased by the `scroll-behavior` rule in
+          // `index.css`, which says why the scrolling is the browser's to do.
+          // The nav scrolls away with the hero rather than pinning, so the
+          // sections below need no scroll margin held back for it.
+          <a
+            key={label}
+            href={`#${target}`}
+            className="transition-opacity duration-200 hover:opacity-70"
+          >
             {label}
           </a>
         ))}

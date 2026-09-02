@@ -3,7 +3,7 @@ import { useRef } from 'react'
 
 import { LiveProjectButton } from '../components/LiveProjectButton'
 import { SectionHeading } from '../components/SectionHeading'
-import { projects } from '../content/identity'
+import { projects, sectionIds } from '../content/identity'
 import { stackedCardScale, stackedCardShrinkStart } from '../lib/scroll'
 
 /** How far below the card above each pinned card sits, in px. */
@@ -141,6 +141,7 @@ export function ProjectsSection() {
 
   return (
     <section
+      id={sectionIds.projects}
       className={`relative z-10 -mt-10 bg-ground px-5 py-20 text-foreground sm:-mt-12 sm:px-8 sm:py-24 md:-mt-14 md:px-10 md:py-32 ${TOP_RADIUS}`}
     >
       <SectionHeading className="hero-heading mb-16 sm:mb-20 md:mb-28">

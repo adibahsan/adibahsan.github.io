@@ -1,6 +1,6 @@
 import { FadeIn } from '../components/FadeIn'
 import { SectionHeading } from '../components/SectionHeading'
-import { services } from '../content/identity'
+import { sectionIds, services } from '../content/identity'
 
 /** Seconds each row waits behind the one above it. */
 const STAGGER = 0.1
@@ -16,7 +16,14 @@ const STAGGER = 0.1
  */
 export function ServicesSection() {
   return (
-    <section className="rounded-t-[40px] bg-white px-5 py-20 text-ground sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32">
+    // The panel answers to `capabilities` already, while its rows still list
+    // the Placeholder Identity's services. The nav has to point somewhere from
+    // here on, and pointing it at the name the section is becoming beats
+    // renaming the anchor again once the copy catches up.
+    <section
+      id={sectionIds.capabilities}
+      className="rounded-t-[40px] bg-white px-5 py-20 text-ground sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32"
+    >
       {/* No gradient here: on the inverted panel the heading takes the ink
           colour the section already carries. */}
       <SectionHeading className="mb-16 sm:mb-20 md:mb-28">{services.heading}</SectionHeading>
