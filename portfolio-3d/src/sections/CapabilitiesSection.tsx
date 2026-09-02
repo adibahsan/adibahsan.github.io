@@ -1,6 +1,6 @@
 import { FadeIn } from '../components/FadeIn'
 import { SectionHeading } from '../components/SectionHeading'
-import { sectionIds, services } from '../content/identity'
+import { capabilities, sectionIds } from '../content/identity'
 
 /** Seconds each row waits behind the one above it. */
 const STAGGER = 0.1
@@ -10,34 +10,34 @@ const STAGGER = 0.1
  * edge that lets the dark page show through above it, so the section reads as a
  * card laid over the page rather than as another band of it.
  *
+ * The rows are capabilities held rather than services sold — the supplied
+ * design put a freelancer's price list in this shape, and the shape turned out
+ * to be better at the other question. Nothing but the copy changed to do it.
+ *
  * Everything here inherits `text-ground` from the section. `design-spec.md`
  * names #0C0C0C for the heading and the numbers and leaves the names and
  * descriptions to follow, which is what inheritance gives.
  */
-export function ServicesSection() {
+export function CapabilitiesSection() {
   return (
-    // The panel answers to `capabilities` already, while its rows still list
-    // the Placeholder Identity's services. The nav has to point somewhere from
-    // here on, and pointing it at the name the section is becoming beats
-    // renaming the anchor again once the copy catches up.
     <section
       id={sectionIds.capabilities}
       className="rounded-t-[40px] bg-white px-5 py-20 text-ground sm:rounded-t-[50px] sm:px-8 sm:py-24 md:rounded-t-[60px] md:px-10 md:py-32"
     >
       {/* No gradient here: on the inverted panel the heading takes the ink
           colour the section already carries. */}
-      <SectionHeading className="mb-16 sm:mb-20 md:mb-28">{services.heading}</SectionHeading>
+      <SectionHeading className="mb-16 sm:mb-20 md:mb-28">{capabilities.heading}</SectionHeading>
 
       {/*
         `divide-y` rules between the rows rather than around them, which is what
-        "separated by" asks for: four hairlines for five services, and none
-        against the heading above or the page below.
+        "separated by" asks for: four hairlines for five rows, and none against
+        the heading above or the page below.
 
         The colour is the ground at 15%, which resolves to the rgba() the design
         gives — one token rather than a second literal to keep in step with it.
       */}
       <ol className="mx-auto max-w-5xl divide-y divide-ground/15">
-        {services.items.map(({ name, description }, index) => (
+        {capabilities.items.map(({ name, description }, index) => (
           // The row is the FadeIn, so the rule above it arrives with it rather
           // than ruling off a row that has not turned up yet.
           <FadeIn

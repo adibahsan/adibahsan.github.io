@@ -82,7 +82,9 @@ export function AboutSection() {
           />
         </div>
 
-        <ContactButton />
+        {/* The same destination the hero's button carries: the page has one
+            call to action, offered twice. */}
+        <ContactButton href={`#${sectionIds.contact}`} />
       </div>
     </section>
   )

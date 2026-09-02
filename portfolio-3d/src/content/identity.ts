@@ -1,13 +1,41 @@
 /**
  * The page's content, and the structure the nav navigates.
  *
- * Most of what follows is still the Placeholder Identity — the fictional "Jack"
- * the supplied design describes — which Reskin's section tickets replace one at
- * a time. It is gathered here rather than scattered through markup so that each
- * of those tickets has one file to work in; several of them reshape the section
- * around the content as well, so this is a seam, not a swap. Copy not yet
- * replaced is verbatim from `.scratch/portfolio-3d/design-spec.md`.
+ * Everything a content change touches lives here. The sections own placement —
+ * which corner an ornament sits in, which diagram a card draws, how the marks
+ * split across the two marquee rows — and this module owns what is placed.
+ *
+ * Art is imported rather than linked. Reskin vendors every asset into the app,
+ * so the built page makes no runtime request to a third-party host; the imports
+ * also mean a missing file fails the build rather than the page.
  */
+
+import group from '../assets/about/group.png'
+import lego from '../assets/about/lego.png'
+import moon from '../assets/about/moon.png'
+import object from '../assets/about/object.png'
+import portraitImage from '../assets/portrait.png'
+import astro from '../assets/marks/astro.svg'
+import docker from '../assets/marks/docker.svg'
+import expo from '../assets/marks/expo.svg'
+import fastapi from '../assets/marks/fastapi.svg'
+import gemini from '../assets/marks/googlegemini.svg'
+import java from '../assets/marks/openjdk.svg'
+import kotlin from '../assets/marks/kotlin.svg'
+import langgraph from '../assets/marks/langgraph.svg'
+import nextjs from '../assets/marks/nextdotjs.svg'
+import node from '../assets/marks/nodedotjs.svg'
+import openai from '../assets/marks/openai.svg'
+import playwright from '../assets/marks/playwright.svg'
+import postgresql from '../assets/marks/postgresql.svg'
+import prisma from '../assets/marks/prisma.svg'
+import python from '../assets/marks/python.svg'
+import qdrant from '../assets/marks/qdrant.svg'
+import react from '../assets/marks/react.svg'
+import redis from '../assets/marks/redis.svg'
+import springboot from '../assets/marks/springboot.svg'
+import typescript from '../assets/marks/typescript.svg'
+import vercel from '../assets/marks/vercel.svg'
 
 /**
  * The page's sections, by the identifier each one anchors at.
@@ -19,9 +47,7 @@
  *
  * That check reaches the nav and no further. Whether a section actually renders
  * the identifier it is given is not testable without a DOM, so adding an entry
- * here does not mean a section answers to it. Contact is left out on those
- * grounds — the section arrives with the ticket that builds it, and adding the
- * identifier ahead of the section would buy an anchor into thin air.
+ * here does not mean a section answers to it.
  */
 export const sectionIds = {
   hero: 'hero',
@@ -29,15 +55,16 @@ export const sectionIds = {
   about: 'about',
   capabilities: 'capabilities',
   projects: 'projects',
+  contact: 'contact',
 } as const
 
 /**
  * The hero nav, in the order it reads across the page.
  *
- * `Price` is gone: it presupposed the freelance sales the supplied design was
- * built around, and this is not a shopfront. Three items is a way-station — the
- * design distributes four across the full width, and Contact restores the count
- * once there is a section for it to reach.
+ * Four items, as the design distributes across the full width. `Price` is gone:
+ * it presupposed the freelance sales the supplied design was built around, and
+ * this is not a shopfront. Contact takes the fourth slot now that there is a
+ * section for it to reach.
  *
  * Targets are taken from {@link sectionIds} rather than written out. A literal
  * would compile just as happily, which is why the contract test sweeps them.
@@ -46,157 +73,234 @@ export const navItems = [
   { label: 'About', target: sectionIds.about },
   { label: 'Capabilities', target: sectionIds.capabilities },
   { label: 'Projects', target: sectionIds.projects },
+  { label: 'Contact', target: sectionIds.contact },
 ] as const
 
 export const hero = {
   /**
-   * Lowercase "i" as specified, and a straight apostrophe (U+0027) — which is
-   * both what `design-spec.md` writes and what its `&apos;` produces in JSX.
-   * The site owner settled this at the fidelity review: the em-dash reading of
-   * `--` does not extend to the apostrophe. Do not "restore" a curly one.
+   * The owner's full name, and the whole of the headline. The supplied design
+   * put a greeting here sized to a twelve-character line; a name is the one
+   * thing a hiring manager must not have to look for, so it takes the line
+   * outright and the section rescales the type to span the width.
    */
-  heading: "Hi, i'm jack",
-  tagline: 'a 3d creator driven by crafting striking and unforgettable projects',
+  heading: 'Adib Ahsan Chowdhury',
+  tagline: 'Tech lead building production retrieval and multi-agent systems',
   portrait: {
-    src: 'https://shrug-person-78902957.figma.site/_components/v2/d24c01ad3a56fc65e942a1f501eb73db42d7cf9a/Rectangle_40443.81459862.png',
-    alt: 'Jack',
+    src: portraitImage,
+    alt: 'Adib Ahsan Chowdhury',
   },
 } as const
 
 /**
- * The marquee band's 21 previews, in the order the design lists them. Splitting
- * them across the two rows is the section's business, not the identity's.
+ * The marquee band's 21 tiles: the technologies the work is actually built
+ * with, current stack first and a short JVM tail.
+ *
+ * The tail is deliberate rather than nostalgic — a JVM-shaped opportunity still
+ * finds him through it, without the band advertising a stack he has largely
+ * left. Splitting the set across the two rows is the section's business.
  */
-export const marqueeImages = [
-  'https://motionsites.ai/assets/hero-space-voyage-preview-eECLH3Yc.gif',
-  'https://motionsites.ai/assets/hero-codenest-preview-Cgppc2qV.gif',
-  'https://motionsites.ai/assets/hero-vex-ventures-preview-BczMFIiw.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-v2-preview-DjvxjG3C.gif',
-  'https://motionsites.ai/assets/hero-asme-preview-B_nGDnTP.gif',
-  'https://motionsites.ai/assets/hero-transform-data-preview-Cx5OU29N.gif',
-  'https://motionsites.ai/assets/hero-vitara-preview-Cjz2QYyU.gif',
-  'https://motionsites.ai/assets/hero-terra-preview-BFjrCr7T.gif',
-  'https://motionsites.ai/assets/hero-skyelite-preview-DHaZIgUv.gif',
-  'https://motionsites.ai/assets/hero-aethera-preview-DknSlcTa.gif',
-  'https://motionsites.ai/assets/hero-designpro-preview-D8c5_een.gif',
-  'https://motionsites.ai/assets/hero-stellar-ai-preview-D3HL6bw1.gif',
-  'https://motionsites.ai/assets/hero-xportfolio-preview-D4A8maiC.gif',
-  'https://motionsites.ai/assets/hero-orbit-web3-preview-BXt4OttD.gif',
-  'https://motionsites.ai/assets/hero-nexora-preview-cx5HmUgo.gif',
-  'https://motionsites.ai/assets/hero-evr-ventures-preview-DZxeVFEX.gif',
-  'https://motionsites.ai/assets/hero-planet-orbit-preview-DWAP8Z1P.gif',
-  'https://motionsites.ai/assets/hero-new-era-preview-CocuDUm9.gif',
-  'https://motionsites.ai/assets/hero-wealth-preview-B70idl_u.gif',
-  'https://motionsites.ai/assets/hero-luminex-preview-CxOP7ce6.gif',
-  'https://motionsites.ai/assets/hero-celestia-preview-0yO3jXO8.gif',
+export const marqueeMarks = [
+  { name: 'Python', src: python },
+  { name: 'TypeScript', src: typescript },
+  { name: 'FastAPI', src: fastapi },
+  { name: 'LangGraph', src: langgraph },
+  { name: 'Qdrant', src: qdrant },
+  { name: 'OpenAI', src: openai },
+  { name: 'Gemini', src: gemini },
+  { name: 'Next.js', src: nextjs },
+  { name: 'React', src: react },
+  { name: 'Expo', src: expo },
+  { name: 'Node.js', src: node },
+  { name: 'PostgreSQL', src: postgresql },
+  { name: 'Prisma', src: prisma },
+  { name: 'Redis', src: redis },
+  { name: 'Docker', src: docker },
+  { name: 'Playwright', src: playwright },
+  { name: 'Astro', src: astro },
+  { name: 'Vercel', src: vercel },
+  { name: 'Kotlin', src: kotlin },
+  { name: 'Spring Boot', src: springboot },
+  { name: 'Java', src: java },
 ] as const
 
 /**
  * The about section's copy and its four pieces of decorative art. The corners
- * they sit in and the edges they arrive from are the section's business; the
- * art itself is identity, and Reskin swaps these four URLs.
+ * they sit in and the edges they arrive from are the section's business.
+ *
+ * The art is the supplied design's, vendored: Reskin changes what the forms
+ * carry, not what they look like, and these four carry nothing but shape.
  */
 export const about = {
   heading: 'About me',
-  /**
-   * Lowercase "i" twice and a straight apostrophe, matching the hero headline's
-   * treatment of the same two characters. Verbatim from `design-spec.md`.
-   */
   paragraph:
-    "With more than five years of experience in design, i focus on branding, web design, and user experience, i truly enjoy working with businesses that aim to stand out and present their best image. Let's build something incredible together!",
-  ornaments: {
-    moon: 'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/moon_icon.11395d36.png',
-    object:
-      'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/p59_1.4659672e.png',
-    lego: 'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/lego_icon-1.703bb594.png',
-    group:
-      'https://shrug-person-78902957.figma.site/_components/v2/ebb2b8f25d8e24d5f0a5ca8af4c950de81aa2fd7/Group_134-1.2e04f3ce.png',
-  },
+    "I'm a tech lead building retrieval and agent systems in production. I care about the practice around them — evaluation gates, tracing, decisions written down — as much as the capability itself.",
+  ornaments: { moon, object, lego, group },
 } as const
 
 /**
- * The services panel's five offerings, in the order the design lists them.
+ * The inverted panel's five rows: capabilities held, not services sold.
  *
- * The displayed ordinal is not stored: it is the row's position, so Reskin can
- * add, drop or reorder a service without renumbering the list by hand.
+ * The supplied design put a freelancer's price list here. The rows below say
+ * what he can be handed rather than what he will invoice for, which is the one
+ * question the panel's shape is actually good at answering.
  *
- * The em dashes in "Branding" are the `--` of `design-spec.md` read as em
- * dashes, per the deviation recorded there.
+ * The displayed ordinal is not stored: it is the row's position, so a row can
+ * be added, dropped or reordered without renumbering the list by hand.
  */
-export const services = {
-  heading: 'Services',
+export const capabilities = {
+  /**
+   * A note for whoever edits this copy next: the source it is drawn from carries
+   * accuracy notes, and several of its claims are worded narrowly on purpose.
+   * The standards work below is one of them — the ruleset was authored by a
+   * colleague, and the contribution here was rolling it out and adding the
+   * security-review pass. "Rolled out" and "added" are load-bearing; do not
+   * promote them to "wrote" or "designed".
+   */
+  heading: 'Capabilities',
   items: [
     {
-      name: '3D Modeling',
+      name: 'Retrieval systems',
       description:
-        'Creation of detailed objects, characters, or environments tailored to specific client needs, ideal for games, products, and visualizations.',
+        'Hybrid dense and sparse retrieval over a vector store, a cross-encoder reranking pass, and a query-understanding layer that splits one question into the separate constraints it actually contains.',
     },
     {
-      name: 'Rendering',
+      name: 'Agent orchestration',
       description:
-        'High-quality, photorealistic renders that showcase designs with custom lighting, textures, and materials to bring concepts to life.',
+        'Multi-agent systems that hold multi-turn state, fan work out to subagents rather than answering everything in one pass, and join a shared workspace as members alongside the people in it.',
     },
     {
-      name: 'Motion Design',
+      name: 'Evaluation and tracing',
       description:
-        'Dynamic animations and motion graphics that add energy and storytelling to brands, products, and digital experiences.',
+        'Eval harnesses over a fixed reference set, gated before release, with tracing on every model call — so a change can be shown to have helped rather than assumed to have.',
     },
     {
-      name: 'Branding',
+      name: 'Product engineering',
       description:
-        'Crafting cohesive visual identities — from logos to full brand systems — that communicate a clear and memorable presence.',
+        'Full-stack delivery across web, mobile and backend: TypeScript and Python in front, Postgres and the JVM behind, containers and CI underneath, shipped to real users since 2019.',
     },
     {
-      name: 'Web Design',
+      name: 'Technical leadership',
       description:
-        'Designing clean, modern, and conversion-focused websites with attention to layout, typography, and user experience.',
+        'Architecture and code review across five products and fifteen engineers, with decisions recorded as ADRs, agentic-coding standards rolled out across the main product, and a security-review pass added over them.',
     },
   ],
 } as const
 
 /**
- * The three projects the cards stack through, in the order the design lists
- * them. As with the services, the drawn ordinal is not stored: it is the card's
- * position in the stack, so Reskin can add, drop or reorder a project without
- * renumbering by hand.
+ * The three projects the cards stack through. As with the capabilities, the
+ * drawn ordinal is derived from the card's position rather than stored.
  *
- * `columnOne` holds the two images stacked in the narrow column and `columnTwo`
- * the single tall one beside them — the split is fixed by the design, so naming
- * the columns keeps the card from having to slice a flat list.
+ * `stack` takes the slot the supplied design used for a client-or-personal
+ * label. A freelancer's visitor wants to know who paid; this one wants to know
+ * what it runs on, and that is the same small line doing a more useful job.
+ *
+ * `diagrams` names what each of the card's three slots draws — content, so it
+ * lives here. Which component draws it is presentation and lives in the section,
+ * the way ornament placement lives in `AboutSection`. The contract test holds
+ * the two counts equal, so a fourth caption cannot appear without a fourth
+ * drawing.
+ *
+ * All three are private, which is why each carries a `status` rather than a
+ * link: a button promising a destination it does not have is worse than none.
  */
 export const projects = {
-  /** Singular, as specified. Not a typo; do not correct it to "Projects". */
-  heading: 'Project',
+  /**
+   * Plural. The supplied design's singular "Project" was carried deliberately
+   * through Design Fidelity and this module used to say so; that was true of a
+   * one-off shopfront and is not true of three.
+   */
+  heading: 'Projects',
   items: [
     {
-      name: 'Nextlevel Studio',
-      category: 'Client',
-      columnOne: [
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055344_5eff02e0-87a5-41ce-b64f-eb08da8f33db.png&w=1280&q=85',
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055431_11d841fd-8b41-46a5-82e4-b04f2407a7d8.png&w=1280&q=85',
-      ],
-      columnTwo:
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055451_e317bf2d-28d4-48cc-86b0-6f72f25b6327.png&w=1280&q=85',
+      name: 'Restaurant Discovery Agent',
+      stack: ['FastAPI', 'LangGraph', 'Qdrant', 'Python'],
+      status: 'Private — hSenid Mobile',
+      diagrams: ['Retrieval pipeline', 'Query understanding', 'Evaluation gate'],
     },
     {
-      name: 'Aura Brand Identity',
-      category: 'Personal',
-      columnOne: [
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055654_911201c5-36d9-4bc6-bac7-331adfce159f.png&w=1280&q=85',
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055723_5ceda0b8-d9c2-4665-b2e3-83ba19ba76d1.png&w=1280&q=85',
-      ],
-      columnTwo:
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055753_adc5dcbd-a8e6-49c0-b43a-9b030d835cea.png&w=1280&q=85',
+      name: 'Multi-Agent Orchestration',
+      stack: ['Hermes A2A', 'Buzz', 'Agent Client Protocol', 'TypeScript'],
+      status: 'Private repositories',
+      diagrams: ['Workspace membership', 'Research fan-out', 'Protocol shim'],
     },
     {
-      name: 'Solaris Digital',
-      category: 'Client',
-      columnOne: [
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055759_963cfb0b-4bd1-4b0f-9d0a-09bd6cf95b2f.png&w=1280&q=85',
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_060108_438f781a-9846-4dcc-89ab-c4e6cb830f5b.png&w=1280&q=85',
-      ],
-      columnTwo:
-        'https://images.higgs.ai/?default=1&output=webp&url=https%3A%2F%2Fd8j0ntlcm91z4.cloudfront.net%2Fuser_38xzZboKViGWJOttwIXH07lWA1P%2Fhf_20260412_055818_9d062121-ad7e-46b9-999a-1a6a692ef1ee.png&w=1280&q=85',
+      name: 'zeroClaw Infrastructure Agent',
+      stack: ['Python', 'Docker', 'Telegram', 'Compose'],
+      status: 'Private repository',
+      diagrams: ['Phased-trust split', 'Read-only surface', 'Approval path'],
     },
+  ],
+} as const
+
+/**
+ * The rest of the work, as a compact list below the stack.
+ *
+ * `href` is null where a project has no public destination, which is most of
+ * them: a live link is offered when one exists and nothing is drawn when one
+ * does not. The contract test's field sweep names the fields the list reads and
+ * leaves `href` out on those grounds.
+ */
+export const otherProjects = [
+  {
+    name: 'Get It.',
+    note: 'A study companion that turns a PDF into a measurable mastery map, built around the document rather than replacing it. GDG AI Hack Milan 2026.',
+    stack: ['Next.js', 'React', 'Three.js', 'Electron'],
+    href: 'https://getit.noesisai.it',
+  },
+  {
+    name: 'Stacksmith',
+    note: 'One sentence in, a provisioned architecture plan for the Stripe Projects CLI out — providers, reasoning, commands and an environment map. Stripe Dhaka 2026.',
+    stack: ['Next.js', 'OpenRouter', 'Supabase'],
+    href: 'https://stacksmith-seven.vercel.app',
+  },
+  {
+    name: 'Vesta',
+    note: 'A bilingual reproductive-health platform for the Bangladesh market, with carrier billing and SMS through the operator SDK, delivered against a formal specification.',
+    stack: ['Next.js', 'Prisma', 'Postgres', 'Redis'],
+    href: null,
+  },
+  {
+    name: 'Engineering Delivery Analytics',
+    note: 'A read-only pipeline over self-hosted GitLab computing five delivery metrics, each sliced before and after AI adoption, labelling its own confidence per metric.',
+    stack: ['Python', 'GitLab API'],
+    href: null,
+  },
+  {
+    name: "Write JS That Doesn't Hurt",
+    note: 'An advanced Next.js session for senior engineers, where every before-and-after pair in the talk exists as a runnable demo rather than a slide.',
+    stack: ['Next.js', 'React'],
+    href: 'https://github.com/adibahsan/hms-tech-talks',
+  },
+  {
+    name: 'AI Learning Harness',
+    note: 'Gives a static teaching methodology the two things it lacks — a clock and somewhere to record a result — through spaced-repetition scheduling over an LLM harness.',
+    stack: ['Astro', 'SQLite'],
+    href: null,
+  },
+] as const
+
+/**
+ * The closing section: how to reach him, and the form that does it.
+ *
+ * `formEndpoint` is the Formspree form the Live Portfolio already posts to,
+ * reused rather than replaced — a second provider would be a second account to
+ * keep alive for no gain.
+ *
+ * No phone number. A public page aimed at recruiters should not publish one,
+ * and the Live Portfolio's habit of doing so is not carried over.
+ */
+export const contact = {
+  heading: 'Contact',
+  intro: 'Looking for applied AI work where reliability gets as much attention as capability. If that is the shape of your team, say hello.',
+  email: 'adibahsanchowdhury@gmail.com',
+  formEndpoint: 'https://formspree.io/f/mzbnekdk',
+  resume: {
+    label: 'Résumé',
+    /** Vendored into `public/`, so the link survives a rebuild and a rename. */
+    href: '/adib-ahsan-chowdhury-resume.pdf',
+  },
+  links: [
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adib-ahsan/' },
+    { label: 'GitHub', href: 'https://github.com/adibahsan' },
   ],
 } as const

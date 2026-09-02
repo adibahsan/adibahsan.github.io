@@ -1,16 +1,26 @@
+export interface ContactButtonProps {
+  /** Where the button goes. A page fragment, or a `mailto:` address. */
+  href: string
+}
+
 /**
- * The page's primary call to action. Presentational for this effort — wiring it
- * to a form provider belongs to Reskin.
+ * The page's primary call to action, now with somewhere to go.
+ *
+ * An anchor rather than a button: it navigates, and the browser already knows
+ * how to do that — including opening in a new tab, showing the destination on
+ * hover, and easing the scroll through the `scroll-behavior` rule in
+ * `index.css`. `inline-block` because an anchor is inline by default and would
+ * otherwise sit at the text baseline rather than filling its own box.
  *
  * The gradient, the shadow pair and the inset outline are given as literal
  * values in `design-spec.md` and carry no Tailwind equivalent, so they stay
  * inline rather than becoming theme tokens nothing else would use.
  */
-export function ContactButton() {
+export function ContactButton({ href }: ContactButtonProps) {
   return (
-    <button
-      type="button"
-      className="rounded-full px-8 py-3 text-xs font-medium uppercase tracking-widest text-white sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base"
+    <a
+      href={href}
+      className="inline-block rounded-full px-8 py-3 text-xs font-medium uppercase tracking-widest text-white sm:px-10 sm:py-3.5 sm:text-sm md:px-12 md:py-4 md:text-base"
       style={{
         background:
           'linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)',
@@ -20,6 +30,6 @@ export function ContactButton() {
       }}
     >
       Contact Me
-    </button>
+    </a>
   )
 }

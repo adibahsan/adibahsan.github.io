@@ -16,6 +16,23 @@ export interface FadeInProps {
   y?: number
   className?: string
   style?: HTMLMotionProps<'div'>['style']
+  /**
+   * What starts the entrance. `in-view` waits for the element to come near the
+   * viewport, which is what almost everything on this page wants.
+   *
+   * `mount` runs it once on the first render instead, and exists for elements
+   * an observer cannot see. An element clipped away by an ancestor's
+   * `overflow: hidden` has an empty intersection rectangle, so it never
+   * qualifies as in view — and if the thing that would bring it back inside the
+   * clip is this very animation, `in-view` deadlocks: it stays hidden because it
+   * has not animated, and it does not animate because it is hidden. The hero's
+   * masked headline is exactly that shape.
+   *
+   * The two are visually identical for anything on screen at load, which the
+   * whole hero is. `mount` is not a shortcut past the observer; it says the cue
+   * is arrival on the page rather than arrival in the viewport.
+   */
+  cue?: 'in-view' | 'mount'
 }
 
 /**
@@ -36,6 +53,7 @@ export function FadeIn({
   y = 30,
   className,
   style,
+  cue = 'in-view',
 }: FadeInProps) {
   // motion.create() mints a fresh component per call, so calling it inline would
   // remount the subtree on every render.
@@ -44,13 +62,16 @@ export function FadeIn({
     [as],
   )
 
+  const arrived = { opacity: 1, x: 0, y: 0 }
+
   return (
     <Tag
       className={className}
       style={style}
       initial={{ opacity: 0, x, y }}
-      whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: '50px', amount: 0 }}
+      {...(cue === 'mount'
+        ? { animate: arrived }
+        : { whileInView: arrived, viewport: { once: true, margin: '50px', amount: 0 } })}
       transition={{ duration, delay, ease }}
     >
       {children}
